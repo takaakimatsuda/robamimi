@@ -19,15 +19,17 @@
   <form class="form-signin" method="POST" action="{{ route('login') }}">
     @csrf
     <h1 class="h3 mb-3 font-weight-normal">『ロバミミ』を使ってみよう。</h1>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+	@foreach ($errors->all() as $error)
+		<div class="alert alert-danger">
+			<li>{{ $error }}</li>
+		</div>
+	@endforeach
+
+	<!-- @if (session('login_error'))
+		<div class="alert alert-danger">
+			{{ session('login_error') }}
+		</div>
+	@endif -->
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
