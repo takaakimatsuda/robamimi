@@ -19,7 +19,6 @@
   <form class="form-signin" method="POST" action="{{ route('login') }}">
     @csrf
     <h1 class="h3 mb-3 font-weight-normal">『ロバミミ』を使ってみよう。</h1>
-    <h1>Create Post</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
