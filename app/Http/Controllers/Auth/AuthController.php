@@ -27,7 +27,7 @@ class AuthController extends Controller
 		if (Auth::attempt($credentials)) {
 			$request->session()->regenerate();
 
-			return redirect('home')->with('login_success', 'ログイン成功しました！');
+			return redirect()->route('home')->with('login_success', 'ログイン成功しました！');
 		}
 
 		return back()->withErrors([
@@ -35,8 +35,20 @@ class AuthController extends Controller
 		]);
 	}
 
-	public function logout()
+	/**
+	 * ユーザーをアプリケーションからログアウトさせる
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function logout(Request $request)
 	{
-		return view('login.login_form');
+		Auth::logout();
+
+		$request->session()->invalidate();
+
+		$request->session()->regenerateToken();
+
+		return redirect()->route('login.show')->with('logout', 'ログアウトしました！');
 	}
 }

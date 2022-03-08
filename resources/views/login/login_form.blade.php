@@ -25,11 +25,11 @@
 		</div>
 	@endforeach
 
-	<!-- @if (session('login_error'))
+	@if (session('logout'))
 		<div class="alert alert-danger">
-			{{ session('login_error') }}
+			{{ session('logout') }}
 		</div>
-	@endif -->
+	@endif
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>

@@ -16,7 +16,7 @@ use App\Http\Controllers\Auth\AuthController;
 
 Route::group(['middleware' => ['guest']], function () {
     // ログインフォーム表示
-	Route::get('/', [AuthController::class,'showLogin'])->name('showLogin');
+	Route::get('/', [AuthController::class,'showLogin'])->name('login.show');
 
 	// ログイン処理
 	Route::post('login',[AuthController::class, 'login'])->name('login');
@@ -27,5 +27,5 @@ Route::group(['middleware' => ['auth']], function () {
 	// ホーム画面
 	Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 	// Auth::routes();
-	Route::get('/', [AuthController::class,'logout'])->name('logout');
+	Route::post('logout', [AuthController::class,'logout'])->name('logout');
 });
