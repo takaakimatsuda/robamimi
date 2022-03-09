@@ -1,64 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+1.要件定義
+### ロバミミ
+* **ジャンル別オープン型レビューサイト**。
+* 昨今のSNSはネタバレ防止の観点から映画やドラマ、アニメなどの感想を呟きづらく、音楽LIVEの感想も参加者のみで感動を共有することが難しい現状にあります。
+* 『ロバミミ』はSNSアカウントと連携し、投稿者がスレッドを立てることでコンテンツの感想をクローズドな場所で共有し合うことができるレビューサイトです。
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### 機能一覧
+* ユーザー登録機能
+* ログイン・ログアウト機能
+* SNS認証機能
+* 管理ユーザー機能
+* スレッド投稿機能
+* コメント投稿機能
+* 検索機能
+* ページネーション機能
+* いいね機能
+* 通知機能
 
-## About Laravel
+### 必要なページ
+* TOPページ（未ログイン）/TOPページ/新規登録ページ/プロフィール編集ページ/検索結果ページ/パスワード再設定ページ/パスワードを忘れた方ようページ
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# 2.画面設計
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* URL([ https://www.figma.com/file/ucfh2sUuKbIMBObYhoy4yA/%E3%83%AD%E3%83%90%E3%83%9F%E3%83%9F?node-id=0%3A1])
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# 3.DB設計
 
-## Learning Laravel
+* URL( [https://cacoo.com/diagrams/plhkQH10Nwpq2sx7-3488D.png](https://cacoo.com/diagrams/plhkQH10Nwpq2sx7-3488D.png) )
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# 4.URL設計
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# ５.タスクバラし
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**ログイン画面**
+* ~~ログイン時メールアドレスを入力できる~~
+* ~~ログイン時パスワードを入力できる~~
+* ~~ログイン時TOPページに遷移できる~~
+* 新規登録画面に遷移できる
+* パスワード再設定画面に遷移できる
+* デザインを設定する
+**ユーザー登録画面**
+* メールアドレスを入力できる
+* ユーザー登録時ダンサーネームが入力できる
+* パスワードを入力できる
+* 確認パスワードが入力できる
+* ユーザー登録時プロフィール画像が追加できる
+* デザインを設定する
+**ユーザー編集画面**
+* 新しいメールアドレスに変更できる
+* 新しいパスワードに変更できる
+* 新しいプロフィール画像に変更できる
+* 新しいユーザーIDに変更できる
+* デザインを設定する
+**パスワード忘れた時用&再設定画面**
+* メールアドレスに認証メールを送信できる
+* 送信メールをクリックすると、パスワード再設定画面に遷移できる
+* デザインを設定する
+**トップページ（おしらせ画面)**
+* ページネーション機能が使える
+* いいねされた通知が表示される
+* スレッドにコメントされた通知が表示される
+* 各カテゴリーチャンネルに遷移できる
+* デザインを設定する
+**カテゴリーチャンネル画面**
+* いいね機能が使える
+* スレッド投稿機能が使える
+* 自分で作成したスレッドが削除できる
+* 管理者はすべてのスレッドが削除できる
+* コメント一覧画面に遷移できる
+* ページネーション機能が使える
+* デザインを設定する
+**コメント一覧画面**
+* コメントができる
+* いいね機能が使える
+* ページネーション機能が使える
+* デザインを設定する
+**ナビゲーションバー**
+* 検索ができる
+* アイコンをクリックしてログアウトできる
+* アイコンをクリックしてプロフィール編集画面に遷移できる
+* アイコンをクリックしてパスワード再設定画面に遷移できる
+* デザインを設定する
+**リリース**
+* herokuにデプロイする
+* awsにデプロイする
+	* 以下は転職活動と並行して実施
+**環境構築**
+* dockerを使う
+**テスト**
+* CircleCI連携
+**その他**
+* SNS連携機能
+* レンタルサーバーにデプロイし、実際に運用する。
+# リポジトリ
+- Github
+- Heroku
+- AWS
