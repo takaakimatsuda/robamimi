@@ -658,7 +658,7 @@ progress {
 }
 @media (min-width: 1400px) {
   .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1320px;
+    max-width: 1900px;
   }
 }
 .row {
@@ -4066,10 +4066,11 @@ textarea.form-control-lg {
 .navbar-brand {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
-  margin-right: 1rem;
-  font-size: 1.125rem;
+  margin-right: 9rem;
+  font-size: 1.7rem;
   text-decoration: none;
   white-space: nowrap;
+	font-family: Yuji Boku;
 }
 .navbar-nav {
   display: flex;
