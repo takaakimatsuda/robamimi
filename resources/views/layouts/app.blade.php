@@ -60,9 +60,7 @@
 
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -78,12 +76,20 @@
         </nav>
 
 				<div class="sidebar" >
-
+					<ul>
+						<li><span class="p-channel_sidebar__notification"><i class="fas fa-bell fa-lg"></i>お知らせ</span></li>
+						<li><span class="p-channel_sidebar__cinema"><i class="fas fa-film fa-lg"></i>映画</span></li>
+						<li><span class="p-channel_sidebar__anime"><i class="fas fa-robot fa-lg"></i>アニメ</span></li>
+						<li><span class="p-channel_sidebar__manga"><i class="fas fa-book-reader fa-lg"></i>漫画</span></li>
+						<li><span class="p-channel_sidebar__live"><i class="fas fa-microphone fa-lg"></i>LIVE</span></li>
+						<li><span class="p-channel_sidebar__rule"><i class="fas fa-question fa-lg"></i>利用ルール</span></li>
+					</ul>
 				</div>
-
+		</div>
         <main class="py-4">
-            @yield('content')
+
+					@yield('content')
+
         </main>
-    </div>
 </body>
 </html>

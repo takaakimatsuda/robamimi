@@ -14,9 +14,10 @@ body {
 
 .form-signin {
   width: 100%;
-  max-width: 330px;
+  max-width: 530px;
   padding: 15px;
   margin: auto;
+	text-align: center;
 }
 .form-signin .checkbox {
   font-weight: 400;
@@ -32,12 +33,43 @@ body {
   z-index: 2;
 }
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+	margin: 10px 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+	margin: 10px 0;
+}
+
+h1.h2.login-title {
+	margin-bottom: 4rem;
+	margin-top: -50px;
+	font-weight: bold;
+	color: darkgray;
+}
+
+button.login-btn.btn-lg.btn-warning {
+	color: white;
+	font-weight: bold;
+	margin: 10px 0
+}
+
+button.register-btn.btn-lg.btn-info {
+	color: white;
+	font-weight: bold;
+	margin-left: 117px;
+}
+
+button.pass-forget-btn.btn-lg.btn-success {
+	font-weight: bold;
+	font-size: 0.8rem;
+	margin-right: -50px;
+}
+
+i.fab.fa-twitter.fa-3x {
+	margin: 0 10px;
+	color: #55ACEE;
+}
+
+i.fab.fa-instagram.fa-3x {
+	margin: 0 10px;
+	color: #FF8E26;
 }
