@@ -15,9 +15,8 @@ body {
 .form-signin {
   width: 100%;
   max-width: 530px;
-  padding: 15px;
-  margin: auto;
-	text-align: center;
+	padding: 15px 15px 0 15px;
+  margin: 0 auto;
 }
 .form-signin .checkbox {
   font-weight: 400;
@@ -41,7 +40,7 @@ body {
 
 h1.h2.login-title {
 	margin-bottom: 4rem;
-	margin-top: -50px;
+	margin-top: 4rem;
 	font-weight: bold;
 	color: darkgray;
 }
@@ -52,16 +51,22 @@ button.login-btn.btn-lg.btn-warning {
 	margin: 10px 0
 }
 
-button.register-btn.btn-lg.btn-info {
+a.register-btn.btn-lg.btn-info {
 	color: white;
 	font-weight: bold;
-	margin-left: 117px;
+	text-decoration: none;
+	width: 110px;
+  margin-left: 118px;
+  border: outset;
 }
 
-button.pass-forget-btn.btn-lg.btn-success {
+a.pass-forget-btn.btn-lg.btn-success {
 	font-weight: bold;
 	font-size: 0.8rem;
+	text-decoration: none;
 	margin-right: -50px;
+	width: 100px;
+	border: outset;
 }
 
 i.fab.fa-twitter.fa-3x {

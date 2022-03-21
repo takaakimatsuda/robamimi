@@ -4580,7 +4580,6 @@ i.fas.fa-question.fa-lg {
 
 .card {
   position: relative;
-  display: flex;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
@@ -4592,6 +4591,7 @@ i.fas.fa-question.fa-lg {
   height: 500px;
 	margin-left: 230px;
   margin-top: 100px;
+	text-align: center;
 }
 .card > hr {
   margin-right: 0;

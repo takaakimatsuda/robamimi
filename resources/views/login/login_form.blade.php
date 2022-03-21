@@ -23,9 +23,9 @@
 					<input type="password" id="inputPassword" name="password" class="form-control" placeholder="パスワード" required>
 					<i class="fab fa-twitter fa-3x"></i><i class="fab fa-instagram fa-3x"></i><br>
 					<button class="login-btn btn-lg btn-warning" type="submit">ログイン</button><br>
-					<button class="register-btn btn-lg btn-info" type="submit">新規登録</button>
-					<button class="pass-forget-btn btn-lg btn-success" type="submit">パスワードを忘れた方</button>
 				</form>
+				<a class="register-btn btn-lg btn-info" href="{{ route('register') }}">新規登録</a>
+				<a class="pass-forget-btn btn-lg btn-success" href="{{ route('password.confirm') }}">パスワードを忘れた方</a>
 			</div>
 		</div>
 	</div>
