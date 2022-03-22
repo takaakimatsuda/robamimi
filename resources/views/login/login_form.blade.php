@@ -25,7 +25,7 @@
 					<button class="login-btn btn-lg btn-warning" type="submit">ログイン</button><br>
 				</form>
 				<a class="register-btn btn-lg btn-info" href="{{ route('register') }}">新規登録</a>
-				<a class="pass-forget-btn btn-lg btn-success" href="{{ route('password.confirm') }}">パスワードを忘れた方</a>
+				<a class="pass-forget-btn btn-lg btn-success" href="{{ route('password.request') }}">パスワードを忘れた方</a>
 			</div>
 		</div>
 	</div>
