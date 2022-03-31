@@ -10,3 +10,7 @@ body {
   align-items: center !important;
   padding-bottom: 40px;
 }
+
+input#image {
+	display: none;
+}
