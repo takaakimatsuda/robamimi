@@ -8,6 +8,7 @@
 			<div class="card-body">
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
+						<h5>現在のプロフィール画像</h5>
 						<i class="fas fa-user-circle fa-8x"></i>
 					</div>
 				</div>
@@ -16,10 +17,6 @@
 
 					<div class="row mb-3">
 						<div class="col-md-8 offset-md-2">
-							<label for="image" class="btn btn-success">
-    							アイコン設定
-							</label>
-							<p>選択されていません</p>
 							<input id="image" type="file" name="image">
 						</div>
 					</div>

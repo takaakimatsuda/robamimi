@@ -69,11 +69,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-		// dd($data['image']);//ここでデバッグ
         // s3アップロード開始
 		$image = $data['image'];
-
-		// dd($image);//これでデバッグしてみる
 
 		// バケットの/フォルダへアップロード
 		$path = Storage::disk('s3')->putFile('/', $image, 'public');
@@ -81,7 +78,6 @@ class RegisterController extends Controller
 		$user->icon = Storage::disk('s3')->url($path);
 
 		$user->save();
-		dd($user);
 		return $user;
     }
 }
