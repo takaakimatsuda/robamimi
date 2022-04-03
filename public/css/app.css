@@ -80,7 +80,7 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
+  background-color: white;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -4580,7 +4580,6 @@ i.fas.fa-question.fa-lg {
 
 .card {
   position: relative;
-  display: flex;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
@@ -4590,8 +4589,8 @@ i.fas.fa-question.fa-lg {
   border-radius: 2.5rem;
 	width: 650px;
   height: 500px;
-	margin-left: 230px;
   margin-top: 100px;
+	text-align: center;
 }
 .card > hr {
   margin-right: 0;

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +25,6 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
@@ -55,7 +56,6 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -64,10 +64,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        // s3アップロード開始
+		$image = $data['image'];
+
+		// バケットの/フォルダへアップロード
+		$path = Storage::disk('s3')->putFile('/', $image, 'public');
+		// アップロードした画像のバスを取得
+		$user->icon = Storage::disk('s3')->url($path);
+
+		$user->save();
+		return $user;
     }
 }
