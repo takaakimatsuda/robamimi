@@ -75,7 +75,7 @@ class RegisterController extends Controller
 		$image = $data['image'];
 
 		// 画像をトリミングする
-		InterventionImage::make($image)->crop(300, 300)->save($image);
+		InterventionImage::make($image)->fit(300, 300)->save($image);
 
 		// バケットの/フォルダへアップロード
 		$path = Storage::disk('s3')->putFile('/', $image, 'public');
