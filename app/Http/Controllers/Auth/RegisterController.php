@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use InterventionImage;
 
 class RegisterController extends Controller
 {
@@ -69,8 +70,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        // s3アップロード開始
+    // s3アップロード開始
+		// 配列から画像の値を取り出す
 		$image = $data['image'];
+
+		// 画像をトリミングする
+		InterventionImage::make($image)->crop(300, 300)->save($image);
 
 		// バケットの/フォルダへアップロード
 		$path = Storage::disk('s3')->putFile('/', $image, 'public');
