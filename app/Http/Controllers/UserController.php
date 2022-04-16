@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use InterventionImage;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -34,11 +36,24 @@ class UserController extends Controller
 	{
 		// フォームから渡されたデータの取得
 		$user = $request->post();
+		// 配列から画像の値を取り出す
+		$image = $request->file('image');
+	// $imageに値が入っている場合、s3アップロード開始
+		if (isset($image)){
+		// 画像をトリミングする
+		InterventionImage::make($image)->fit(300, 300)->save($image);
 
+		// バケットの/フォルダへアップロード
+		$path = Storage::disk('s3')->putFile('/', $image, 'public');
+		// アップロードした画像のバスを取得
+		$icon = Storage::disk('s3')->url($path);
+		$this->user->updateUserIconFindById($user, $icon);
+		}
 		// DBへ更新依頼
 		$this->user->updateUserFindById($user);
 
 		// 再度編集画面へリダイレクト
+		session()->flash('flash_message', '更新しました');
 		return redirect()->route('users.edit', ['id' => $id]);
 	}
 

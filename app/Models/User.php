@@ -67,7 +67,18 @@ class User extends Authenticatable
 			'id' => $user['id']
 		])->update([
 			'name' => $user['name'],
-			'email' => $user['email']
+			'email' => $user['email'],
 		]);
 	}
+		/**
+ * IDで指定したユーザ画像を更新する
+ */
+public function updateUserIconFindById($user, $icon)
+{
+	return $this->where([
+		'id' => $user['id']
+	])->update([
+		'icon' => $icon
+	]);
+}
 }

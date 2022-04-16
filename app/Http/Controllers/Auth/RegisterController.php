@@ -73,7 +73,6 @@ class RegisterController extends Controller
     // s3アップロード開始
 		// 配列から画像の値を取り出す
 		$image = $data['image'];
-
 		// 画像をトリミングする
 		InterventionImage::make($image)->fit(300, 300)->save($image);
 

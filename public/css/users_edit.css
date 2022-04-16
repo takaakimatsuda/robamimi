@@ -1,0 +1,26 @@
+img.icon {
+	border-radius: 50%;
+	width: 111px;
+	height: 111px;
+}
+
+h7.icon-title {
+	font-weight: bold;
+}
+
+p.username-title {
+	margin-top: 1rem;
+	text-align: left;
+}
+
+p.mailaddress-title {
+	margin-top: 1rem;
+	text-align: left;
+}
+
+.flash_message.bg-success {
+	margin-top: 45px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}
