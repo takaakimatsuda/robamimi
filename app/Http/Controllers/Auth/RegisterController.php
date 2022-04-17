@@ -70,7 +70,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-    // s3アップロード開始
+    // imageに値が入っている場合、s3アップロード開始
+		if(isset($image)){
 		// 配列から画像の値を取り出す
 		$image = $data['image'];
 		// 画像をトリミングする
@@ -80,6 +81,7 @@ class RegisterController extends Controller
 		$path = Storage::disk('s3')->putFile('/', $image, 'public');
 		// アップロードした画像のバスを取得
 		$user->icon = Storage::disk('s3')->url($path);
+		}
 
 		$user->save();
 		return $user;

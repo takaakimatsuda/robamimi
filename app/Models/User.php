@@ -61,24 +61,26 @@ class User extends Authenticatable
 	/**
  * IDで指定したユーザを更新する
  */
-	public function updateUserFindById($user)
+	public function updateUserFindById($post, $user)
 	{
 		return $this->where([
 			'id' => $user['id']
 		])->update([
-			'name' => $user['name'],
-			'email' => $user['email'],
+			'name' => $post['name'],
+			'email' => $post['email'],
 		]);
 	}
 		/**
  * IDで指定したユーザ画像を更新する
  */
-public function updateUserIconFindById($user, $icon)
+public function updateUserIconFindById($post, $user, $icon)
 {
 	return $this->where([
 		'id' => $user['id']
 	])->update([
-		'icon' => $icon
+		'icon' => $icon,
+		'name' => $post['name'],
+		'email' => $post['email'],
 	]);
 }
 }

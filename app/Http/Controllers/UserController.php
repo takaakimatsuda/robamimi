@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use InterventionImage;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -32,10 +33,12 @@ class UserController extends Controller
 	 * ユーザ更新関数
 	 */
 
-	public function postEdit($id, Request $request)
+	public function postEdit(Request $request)
 	{
-		// フォームから渡されたデータの取得
-		$user = $request->post();
+		// ログインidのデータを取得
+		$user = Auth::user();
+		// リクエストフォームに入力したデータを取得
+		$post = $request->post();
 		// 配列から画像の値を取り出す
 		$image = $request->file('image');
 	// $imageに値が入っている場合、s3アップロード開始
@@ -47,14 +50,15 @@ class UserController extends Controller
 		$path = Storage::disk('s3')->putFile('/', $image, 'public');
 		// アップロードした画像のバスを取得
 		$icon = Storage::disk('s3')->url($path);
-		$this->user->updateUserIconFindById($user, $icon);
-		}
+		$this->user->updateUserIconFindById($post, $user, $icon);
+		} else {
 		// DBへ更新依頼
-		$this->user->updateUserFindById($user);
+		$this->user->updateUserFindById($post, $user);
+		}
 
 		// 再度編集画面へリダイレクト
 		session()->flash('flash_message', '更新しました');
-		return redirect()->route('users.edit', ['id' => $id]);
+		return redirect()->route('users.edit', ['id' => $user['id']]);
 	}
 
 }
