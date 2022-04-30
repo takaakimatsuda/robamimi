@@ -70,8 +70,9 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
     // imageに値が入っている場合、s3アップロード開始
-		if(isset($image)){
+		if(isset($data['image'])){
 		// 配列から画像の値を取り出す
 		$image = $data['image'];
 		// 画像をトリミングする
