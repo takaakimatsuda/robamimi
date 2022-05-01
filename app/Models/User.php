@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+// ソフトデリートを使用できるように
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -15,6 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+
     protected $fillable = [
         'name',
         'email',
@@ -73,14 +77,21 @@ class User extends Authenticatable
 		/**
  * IDで指定したユーザ画像を更新する
  */
-public function updateUserIconFindById($post, $user, $icon)
-{
-	return $this->where([
-		'id' => $user['id']
-	])->update([
-		'icon' => $icon,
-		'name' => $post['name'],
-		'email' => $post['email'],
-	]);
-}
+	public function updateUserIconFindById($post, $user, $icon)
+	{
+		return $this->where([
+			'id' => $user['id']
+		])->update([
+			'icon' => $icon,
+			'name' => $post['name'],
+			'email' => $post['email'],
+		]);
+	}
+	use SoftDeletes;
+	public function deleteUserFindById($id)
+	{
+		return $this->where([
+			'id' => $id
+		])->delete();
+	}
 }
