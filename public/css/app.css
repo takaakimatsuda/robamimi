@@ -4529,6 +4529,7 @@ textarea.form-control-lg {
 	position: fixed;
   width: 230px;
   height: 932px;
+	padding-top: 100px;
   background-color: #8C5F35;
 }
 
