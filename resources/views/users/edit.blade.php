@@ -15,7 +15,11 @@
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
 						<h5>現在のアイコン</h5>
-						<img class="icon" src="{{ $user->icon }}">
+						@if (isset($user->icon))
+							<img class="icon" src="{{ $user->icon }}">
+						@else
+							<i class="fas fa-user-circle fa-8x"></i>
+						@endif
 					</div>
 				</div>
 			<!-- 重要な箇所ここから -->
@@ -30,17 +34,17 @@
 						<p class="mailaddress-title">メールアドレス</p>
 						<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" /><br />
 						<button type="submit"  class="btn btn-primary" >
-							更新
+							更新する
 						</button>
 					</div>
 				</div>
 			</form>
-			<form action="{{ route('users.delete') }}" method="POST">
+			<!-- <form action="{{ route('users.delete') }}" method="POST">
 			@csrf
 				<button type="submit"  class="btn btn-primary" >
 								退会する
 				</button>
-			</form>
+			</form> -->
 			<!-- 重要な箇所ここまで -->
 			</div>
 		</div>
