@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
 			$table->string('icon')->nullable();
             $table->timestamps();
+
+			// 削除処理はソフトデリートであることを定義
+			$table->softDeletes();
         });
     }
 

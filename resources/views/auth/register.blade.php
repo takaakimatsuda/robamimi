@@ -8,7 +8,7 @@
 			<div class="card-body">
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
-						<h5>現在のプロフィール画像</h5>
+						<h5>デフォルトのアイコン</h5>
 						<i class="fas fa-user-circle fa-8x"></i>
 					</div>
 				</div>

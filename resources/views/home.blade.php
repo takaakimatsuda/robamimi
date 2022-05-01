@@ -11,7 +11,7 @@
 
 
                     {{ __('You are logged in!') }}
-					<li>名前: {{ Auth::user()->name }}</li>
+					<li>名前: {{ Auth::user()->icon }}</li>
                 </div>
             </div>
         </div>
