@@ -56,7 +56,10 @@ class UserController extends Controller
 		// DBへ更新依頼
 		$this->user->updateUserFindById($post, $user);
 		}
-
+		// アイコンにデフォルト画像にするチェックが入っていた場合、DBのiconを消去
+		if (isset($post['defaultImage'])){
+			$this->user->deleteUserIconFindById($user);
+		}
 		// 再度編集画面へリダイレクト
 		session()->flash('flash_message', '更新しました');
 		return redirect()->route('users.edit', ['id' => $user['id']]);

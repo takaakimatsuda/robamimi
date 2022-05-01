@@ -28,8 +28,11 @@
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
 						<h7 class="icon-title">アイコンを更新する場合は画像を設定してください</h7>
-						<input id="image" type="file" name="image">
-						<p class="username-title">ユーザーネーム</p>
+						<input id="image" type="file" name="image"><br>
+						<div class="default-image mt-1">
+							<input type="checkbox" name="defaultImage">アイコンをデフォルトに戻す
+						</div>
+							<p class="username-title">ユーザーネーム</p>
 						<input type="text" name="name" class="form-control " value="{{ $user->name }}" placeholder="ユーザーネーム" />
 						<p class="mailaddress-title">メールアドレス</p>
 						<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" /><br />

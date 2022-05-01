@@ -87,6 +87,16 @@ class User extends Authenticatable
 			'email' => $post['email'],
 		]);
 	}
+
+	public function deleteUserIconFindById($user)
+	{
+		return $this->where([
+			'id' => $user['id']
+		])->update([
+			'icon' => null
+		]);
+	}
+
 	use SoftDeletes;
 	public function deleteUserFindById($id)
 	{
