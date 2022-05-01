@@ -30,8 +30,9 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('logout', [AuthController::class,'logout'])->name('logout');
 
 	Route::group(['prefix' => 'users'], function() {
-        Route::get('edit/{id}', [UserController::class,'getEdit'])->name('users.edit');
-        Route::post('edit/{id}', [UserController::class,'postEdit'])->name('users.postEdit');
+        Route::get('edit', [UserController::class,'getEdit'])->name('users.edit');
+        Route::post('edit', [UserController::class,'postEdit'])->name('users.postEdit');
+		Route::post('delete', [UserController::class,'delete'])->name('users.delete');
     });
 });
 

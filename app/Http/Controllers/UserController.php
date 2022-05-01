@@ -23,9 +23,10 @@ class UserController extends Controller
 	/**
 	 * 画面表示件データ一件取得用
 	 */
-	public function getEdit($id)
+	public function getEdit()
 	{
-	$user = $this->user->selectUserFindById($id);
+		$id = Auth::id();
+		$user = $this->user->selectUserFindById($id);
 		return view('users.edit', compact('user'));
 	}
 
@@ -60,5 +61,17 @@ class UserController extends Controller
 		session()->flash('flash_message', '更新しました');
 		return redirect()->route('users.edit', ['id' => $user['id']]);
 	}
+	/**
+	 * ユーザ削除関数
+	 */
+	public function delete(Request $request){
+		$id = Auth::id();
+		$this->user->deleteUserFindById($id);
+		Auth::logout();
 
+		$request->session()->invalidate();
+
+		$request->session()->regenerateToken();
+		return redirect()->route('login.show');
+	}
 }

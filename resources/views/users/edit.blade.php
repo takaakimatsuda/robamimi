@@ -19,7 +19,7 @@
 					</div>
 				</div>
 			<!-- 重要な箇所ここから -->
-			<form action="{{ route('users.postEdit', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
+			<form action="{{ route('users.postEdit') }}" method="POST" enctype="multipart/form-data">
 				@csrf
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
@@ -34,6 +34,12 @@
 						</button>
 					</div>
 				</div>
+			</form>
+			<form action="{{ route('users.delete') }}" method="POST">
+			@csrf
+				<button type="submit"  class="btn btn-primary" >
+								退会する
+				</button>
 			</form>
 			<!-- 重要な箇所ここまで -->
 			</div>
