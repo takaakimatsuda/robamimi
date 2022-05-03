@@ -15,7 +15,7 @@
 		<div class="card">
 			<form class="form-signin" method="POST" action="{{ route('login') }}">
 				@csrf
-				<h1 class="h2 login-title">『ロバミミ』を使ってみよう。</h1>
+				<h2 class="login-title">『ロバミミ』を使ってみよう。</h1>
 
 				<label for="inputEmail" class="sr-only">Email address</label>
 				<input type="email" id="inputEmail" name="email" class="form-control" placeholder="メールアドレス" required autofocus>
@@ -25,7 +25,7 @@
 				<button class="login-btn btn-lg btn-warning" type="submit">ログイン</button><br>
 			</form>
 			<a class="register-btn btn-lg btn-info" href="{{ route('register') }}">新規登録</a>
-			<a class="pass-forget-btn btn-lg btn-success" href="{{ route('password.request') }}">パスワードを忘れた方</a>
+			<a class="pass-forget-btn btn-lg btn-success" href="{{ route('password_reset.email.form') }}">パスワードを忘れた方</a>
 		</div>
 	</div>
 </div>
