@@ -35,14 +35,8 @@ body {
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] {
-	margin: 10px 0;
-}
-.form-signin input[type="password"] {
-	margin: 10px 0;
-}
 
-h1.h2.login-title {
+h2.login-title {
 	margin-bottom: 4rem;
 	margin-top: 4rem;
 	font-weight: bold;
