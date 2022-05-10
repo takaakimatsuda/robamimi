@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\ThreadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,8 +54,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('edit', [UserController::class,'postEdit'])->name('user.postEdit');
 		Route::post('delete', [UserController::class,'delete'])->name('user.delete');
     });
-
-
+	Route::prefix('thread')->name('thread.')->group(function () {
+		Route::get('/eiga', [ThreadController::class, 'index'])->name('index');
+		Route::post('/eiga', [ThreadController::class, 'store'])->name('store');
+		Route::delete('delete', [ThreadController::class, 'delete'])->name('delete');
+	});
 });
 
 Auth::routes();

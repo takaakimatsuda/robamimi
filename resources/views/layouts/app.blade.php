@@ -80,7 +80,7 @@
 				<div class="sidebar" >
 					<ul>
 						<li><span class="p-channel_sidebar__notification"><i class="fas fa-bell fa-lg"></i>お知らせ</span></li>
-						<li><span class="p-channel_sidebar__cinema"><i class="fas fa-film fa-lg"></i>映画</span></li>
+						<li><a class="text-decoration-none link-dark" href="{{ route('thread.index') }}"><span class="p-channel_sidebar__cinema"><i class="fas fa-film fa-lg"></i>映画</span></a></li>
 						<li><span class="p-channel_sidebar__anime"><i class="fas fa-robot fa-lg"></i>アニメ</span></li>
 						<li><span class="p-channel_sidebar__manga"><i class="fas fa-book-reader fa-lg"></i>漫画</span></li>
 						<li><span class="p-channel_sidebar__live"><i class="fas fa-microphone fa-lg"></i>LIVE</span></li>

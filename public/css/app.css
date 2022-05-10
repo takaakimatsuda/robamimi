@@ -11374,3 +11374,17 @@ i.fas.fa-question.fa-lg {
 .form-signin input[type="password"] {
 	margin: 10px 0;
 }
+
+/* ボタン押下時の半透明設定 */
+
+a.navbar-brand:hover {
+	opacity: 0.5;
+}
+
+span.p-channel_sidebar__cinema:hover {
+	opacity: 0.5;
+}
+
+a#navbarDropdown:hover {
+	opacity: 0.5;
+}

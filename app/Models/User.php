@@ -104,4 +104,12 @@ class User extends Authenticatable
 			'id' => $id
 		])->delete();
 	}
+
+	/**
+     * ユーザーに関連しているスレッドの取得
+     */
+    public function threads()
+    {
+        return $this->hasMany(Thread::class);
+    }
 }

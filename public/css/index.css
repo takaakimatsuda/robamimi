@@ -1,0 +1,13 @@
+img.icon.rounded-circle {
+	height: 64px;
+}
+
+button.trash {
+	border: none;
+	outline: none;
+	background: transparent;
+}
+
+button.trash:hover {
+	opacity: 0.5 ;
+}
