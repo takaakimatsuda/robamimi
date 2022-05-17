@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ThreadController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +59,11 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get('/eiga', [ThreadController::class, 'index'])->name('index');
 		Route::post('/eiga', [ThreadController::class, 'store'])->name('store');
 		Route::delete('delete', [ThreadController::class, 'delete'])->name('delete');
+	});
+	Route::prefix('comment')->name('comment.')->group(function () {
+		Route::get('/{id}', [CommentController::class, 'index'])->name('index');
+		Route::post('/', [CommentController::class, 'store'])->name('store');
+		Route::delete('delete', [CommentController::class, 'delete'])->name('delete');
 	});
 });
 

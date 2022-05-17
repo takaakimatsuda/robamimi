@@ -9,7 +9,7 @@
     <div class="row d-flex justify-content-center col-12">
 		{{-- 投稿 --}}
 		@foreach ($threads as $thread)
-			<div class="col-1 mt-4 text-end">
+			<div class="col-1 text-end">
 				@if (isset($thread->user->icon))
 					<img class="icon rounded-circle" src="{{ $thread->user->icon }}">
 				@else
@@ -19,9 +19,13 @@
 			<div class="bg-white rounded-md p-2 col-8">
 				{{-- スレッド --}}
 				<p class="fw-bold d-inline-block mb-1 col-1 text-start fs-5">{{$thread->user->name}}</p>
-				<p class="d-inline-block text-start col-4 text-secondary">{{$thread->created_at->format('m-d H:i');}}</p>
-				<p class="mb-1 text-xl">{{$thread->title}}</p>
-				<p class="fw-bold mt-3">何件の返信</p>
+				<p class="d-inline-block text-start col-4 text-secondary mb-0">{{$thread->created_at->format('m-d H:i');}}</p>
+				<p class="mb-2 text-xl">{{$thread->title}}</p>
+				@if ($thread->comments_count !== 0)
+					<a class="fw-bold" href="{{ route('comment.index', ['id'=>$thread->id]) }}">{{$thread->comments_count}}件のコメント</a>
+				@else
+					<a class="fw-bold" href="{{ route('comment.index', ['id'=>$thread->id]) }}">コメントする</a>
+				@endif
 			</div>
 			{{-- 削除 --}}
 			<div class="mt-3 col-3">

@@ -12,12 +12,17 @@ class Thread extends Model
     use HasFactory;
 
 	/**
-     * スレッドを所有しているユーザーの取得
-     */
+  * スレッドを所有しているユーザーの取得
+  */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+	public function comments()
+	{
+		return $this->hasMany(Comment::class);
+	}
 
 	protected $fillable = [
     'title',
