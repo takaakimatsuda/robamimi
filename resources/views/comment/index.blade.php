@@ -1,5 +1,7 @@
 @extends('layouts.app')
+@section('css')
 <link href="{{ asset('css/index.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
 <div class="container">
@@ -16,7 +18,7 @@
 					<p class="fw-bold d-inline-block mb-1 col-1 text-start fs-5">{{$thread->user->name}}</p>
 					<p class="d-inline-block text-start col-4 text-secondary mb-0">{{$thread->created_at->format('m-d H:i');}}</p>
 					<p class="text-xl">{{$thread->title}}</p>
-					<a class="fw-bold" href="{{ route('thread.index') }}">スレッドに戻る</a>
+					<a class="fw-bold" href="{{ route('thread.index', ['genre' => $genre->name]) }}">スレッドに戻る</a>
 				</div>
 		</div>
   <div class="row d-flex justify-content-center col-12">
@@ -34,7 +36,6 @@
 				<p class="fw-bold d-inline-block col-1 text-start fs-5 mb-1">{{$comment->user->name}}</p>
 				<p class="d-inline-block text-start col-4 text-secondary mb-0">{{$comment->created_at->format('m-d H:i');}}</p>
 				<p class="text-xl">{{$comment->contents}}</p>
-				<i class="fas fa-thumbs-up mb-2"></i>
 			</div>
 			{{-- 削除 --}}
 			<div class="mt-3 col-3">

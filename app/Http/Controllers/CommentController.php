@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Thread;
+use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -14,7 +15,8 @@ class CommentController extends Controller
 		// コメント情報を取得して代入
 		$comments = Comment::where('thread_id',$id)->orderBy('created_at', 'desc')->paginate(10);
 		$thread = Thread::find($id);
-		return view('comment/index', compact('comments', 'id', 'thread'));
+		$genre = Genre::find($thread->genre_id);
+		return view('comment/index', compact('comments', 'id', 'thread', 'genre'));
 	}
 
     public function store(Request $request)
@@ -32,5 +34,6 @@ class CommentController extends Controller
    {
 	   $id = $request->comment;
 	   Comment::deleteCommentFindById($id);
-	   return back();   }
+	   return back();
+	}
 }

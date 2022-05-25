@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
 	<div class="mt-5 pt-2 text-left border-bottom">
-		<p class="h4 fw-bold">映画</p>
+		<p class="h4 fw-bold">{{$genre->detail}}</p>
 	</div>
     <div class="row d-flex justify-content-center col-12">
 		{{-- 投稿 --}}
@@ -39,10 +39,10 @@
 	</div>
 	<p class="mt-5">{{ $threads->links() }}</p>
 		<div class="text-start col-8">
-			<form action="{{ route('thread.store') }}" method="POST">
+			<form action="{{ route('thread.store', ['genre_id'=>$genre->id]) }}" method="POST">
 				@csrf
 				<div>
-					<input type="text" class="form-control" name="title" placeholder="スレッドを作成する"/>
+					<input type="text" class="form-control" name="title" placeholder="スレッドを作成する" autofocus/>
 				</div>
 				<div class="text-end mt-1 rounded">
 					<button class="btn-success text-end rounded">送信</button>

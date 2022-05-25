@@ -19,6 +19,11 @@ class Thread extends Model
         return $this->belongsTo(User::class);
     }
 
+	public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
+
 	public function comments()
 	{
 		return $this->hasMany(Comment::class);

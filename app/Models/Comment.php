@@ -35,4 +35,9 @@ class Comment extends Model
 		  'id' => $id
 	  ])->delete();
   }
+
+  public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }
