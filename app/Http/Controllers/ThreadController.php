@@ -41,7 +41,7 @@ class ThreadController extends Controller
 		// 検索フォームに入力された単語のエスケープ処理
 		$search_message = '%' . addcslashes($request->search_message, '%_\\') . '%';
 		// 検索フォームに入力された単語でLIKE検索した結果のスレッド情報を取得して代入（最新情報を上位に表示）
-		$threads = Thread::where('title', 'LIKE', $search_message)->withCount('comments')->orderBy('created_at', 'desc')->Paginate(5);
+		$threads = Thread::where('title', 'LIKE', $search_message)->withCount('comments')->orderBy('created_at', 'desc')->paginate(5);
 		// スレッド検索ページを表示
 		return view('search/index', compact('threads'));
 	}
