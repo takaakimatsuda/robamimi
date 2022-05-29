@@ -11385,6 +11385,22 @@ span.p-channel_sidebar__cinema:hover {
 	opacity: 0.5;
 }
 
+span.p-channel_sidebar__anime:hover {
+	opacity: 0.5;
+}
+
+span.p-channel_sidebar__manga:hover {
+	opacity: 0.5;
+}
+
+span.p-channel_sidebar__live:hover {
+	opacity: 0.5;
+}
+
+span.p-channel_sidebar__rule:hover {
+	opacity: 0.5;
+}
+
 a#navbarDropdown:hover {
 	opacity: 0.5;
 }
