@@ -19,7 +19,8 @@ class User extends Authenticatable
      */
 
 
-    protected $fillable = [
+    protected $fillable =
+	[
         'name',
         'email',
         'password',
@@ -31,7 +32,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $hidden = [
+    protected $hidden =
+	[
         'password',
     ];
 
@@ -50,7 +52,8 @@ class User extends Authenticatable
 	public function selectUserFindById($id)
 	{
 		// 「SELECT id, name, email WHERE id = ?」を発行する
-		$query = $this->select([
+		$query = $this->select
+		([
 			'id',
 			'name',
 			'email',
@@ -112,4 +115,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Thread::class);
     }
+
 }

@@ -29,8 +29,9 @@ class Thread extends Model
 		return $this->hasMany(Comment::class);
 	}
 
-	protected $fillable = [
-    'title',
+	protected $fillable =
+	[
+		'title',
 		'user_id',
 		'thread_id',
     ];
