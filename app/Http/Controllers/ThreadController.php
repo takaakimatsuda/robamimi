@@ -13,10 +13,10 @@ class ThreadController extends Controller
 {
 	public function index($genre)
     {
-			$genre = Genre::where('name', $genre)->first();
-			// スレッドを投稿したユーザーの情報とコメントの件数を取得
-			$threads = Thread::with('user')->withCount('comments')->orderBy('created_at', 'desc')->where('genre_id', $genre->id)->paginate(5);
-			return view('thread/index', compact('threads', 'genre'));
+		$genre = Genre::where('name', $genre)->first();
+		// スレッドを投稿したユーザーの情報とコメントの件数を取得
+		$threads = Thread::with('user')->withCount('comments')->orderBy('created_at', 'desc')->where('genre_id', $genre->id)->paginate(5);
+		return view('thread/index', compact('threads', 'genre'));
     }
 
 	public function store(Request $request, $genre_id)

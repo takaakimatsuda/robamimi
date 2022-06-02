@@ -11,7 +11,7 @@
 		@foreach ($threads as $thread)
 			<div class="col-1 text-end">
 				@if (isset($thread->user->icon))
-					<img class="icon rounded-circle" src="{{ $thread->user->icon }}">
+					<img class="icon rounded-circle mt-2" src="{{ $thread->user->icon }}">
 				@else
 					<i class="fas fa-user-circle fa-4x mt-2"></i>
 				@endif
@@ -29,11 +29,13 @@
 			</div>
 			{{-- 削除 --}}
 			<div class="mt-3 col-3">
+				@if (Auth::id() == $thread->user_id)
 				<form action="{{route('thread.delete', ['thread'=>$thread->id])}}" method="POST">
 						@method('DELETE')
 						@csrf
 						<button class="trash"><i class="fas fa-trash" type="submit"></i></button>
 				</form>
+				@endif
 			</div>
 		@endforeach
 	</div>
