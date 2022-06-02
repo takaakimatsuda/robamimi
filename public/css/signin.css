@@ -76,3 +76,10 @@ i.fab.fa-instagram.fa-3x {
 	margin: 0 10px;
 	color: #FF8E26;
 }
+
+.flash_message.bg-secondary {
+	margin-top: 45px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}
