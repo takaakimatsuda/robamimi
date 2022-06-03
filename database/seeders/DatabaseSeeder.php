@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\Genre;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +16,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(2)->create();
+        User::create([
+			'name' => 'test',
+			'email' => 'test@test.com',
+			'password' => Hash::make('password'),
+		]);
+		User::create([
+			'name' => 'test2',
+			'email' => 'test2@test.com',
+			'password' => Hash::make('password'),
+		]);
+		Genre::create([
+			'name' => 'eiga',
+			'detail' => '映画',
+		]);
+		Genre::create([
+			'name' => 'anime',
+			'detail' => 'アニメ',
+		]);
+		Genre::create([
+			'name' => 'manga',
+			'detail' => '漫画',
+		]);
+		Genre::create([
+			'name' => 'live',
+			'detail' => 'LIVE',
+		]);
     }
 }

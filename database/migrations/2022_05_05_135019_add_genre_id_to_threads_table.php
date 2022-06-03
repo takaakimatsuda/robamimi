@@ -15,7 +15,7 @@ class AddGenreIdToThreadsTable extends Migration
     {
         Schema::table('threads', function (Blueprint $table) {
             //
-			$table->foreignId('genre_id')->constrained()->comment('ジャンル番号');
+			$table->foreignId('genre_id')->comment('ジャンル番号')->constrained();
         });
     }
 

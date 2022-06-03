@@ -101,6 +101,8 @@ class User extends Authenticatable
 	}
 
 	use SoftDeletes;
+	use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+	protected $softCascade = ['threads', 'comments'];
 	public function deleteUserFindById($id)
 	{
 		return $this->where([
@@ -114,6 +116,14 @@ class User extends Authenticatable
     public function threads()
     {
         return $this->hasMany(Thread::class);
+    }
+
+	/**
+     * ユーザーに関連しているコメントの取得
+     */
+	public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }
