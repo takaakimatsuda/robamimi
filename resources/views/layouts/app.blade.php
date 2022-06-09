@@ -12,7 +12,6 @@
     <!-- Scripts -->
 	<script type="text/javascript"src="//code.typesquare.com/static/ZDbTe4IzCko%253D/ts106f.js"charset="utf-8"></script>
 	<script src="https://kit.fontawesome.com/635e45e886.js" crossorigin="anonymous"></script>
-	<script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -91,9 +90,10 @@
 						<li><a class="text-decoration-none link-dark" href="{{ route('rule') }}"><span class="p-channel_sidebar__rule"><i class="fas fa-question fa-lg"></i>利用ルール</span></a></li>
 					</ul>
 				</div>
-		</div>
         <main class="py-4">
 			@yield('content')
         </main>
+		</div>
+		<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

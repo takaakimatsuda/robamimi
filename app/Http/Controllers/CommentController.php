@@ -13,7 +13,7 @@ class CommentController extends Controller
 	public function index($id)
 	{
 		// コメント情報を取得して代入
-		$comments = Comment::where('thread_id',$id)->orderBy('created_at', 'desc')->paginate(10);
+		$comments = Comment::where('thread_id',$id)->withCount('likes')->with('user')->orderBy('created_at', 'desc')->paginate(10);
 		$thread = Thread::find($id);
 		$genre = Genre::find($thread->genre_id);
 		return view('comment/index', compact('comments', 'id', 'thread', 'genre'));
