@@ -6,11 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // ソフトデリートを使用できるように
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Comment extends Model
 {
     use HasFactory;
 	protected $fillable = ['thread_id', 'user_id', 'contents'];
+	protected $appends = ['liked_by_user'];
+
 
 	/**
   * コメントを所有しているユーザーの取得
@@ -28,6 +31,14 @@ class Comment extends Model
 	  return $this->belongsTo(Thread::class);
   }
 
+  	/**
+  * コメントを所有しているいいねの取得
+  */
+  public function likes()
+  {
+	  return $this->belongsToMany('App\Models\User', 'likes')->withTimestamps();
+  }
+
   use SoftDeletes;
   public function deleteCommentFindById($id)
   {
@@ -39,5 +50,17 @@ class Comment extends Model
   public function users()
     {
         return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+	/**
+     * そのコメントにユーザーがすでにいいねを押しているかチェック
+     * アクセサ - liked_by_user
+     * @return boolean
+     */
+    public function getLikedByUserAttribute()
+    {
+		return $this->likes->contains(function ($user) {
+            return $user->id === Auth::user()->id;
+        });
     }
 }

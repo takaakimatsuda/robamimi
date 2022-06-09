@@ -37,7 +37,7 @@
 				<p class="d-inline-block text-start col-4 text-secondary mb-0">{{$comment->created_at->format('m-d H:i');}}</p>
 				<p class="text-xl">{{$comment->contents}}</p>
 				{{-- いいね機能 --}}
-				<like-component></like-component>
+				<like-component :comment={{$comment}} :likes_count={{$comment->likes_count}}></like-component>
 			</div>
 			{{-- 削除 --}}
 			<div class="mt-3 col-3">
