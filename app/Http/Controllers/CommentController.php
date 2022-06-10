@@ -15,6 +15,10 @@ class CommentController extends Controller
 		// コメント情報を取得して代入
 		$comments = Comment::where('thread_id',$id)->withCount('likes')->with('user')->orderBy('created_at', 'desc')->paginate(10);
 		$thread = Thread::find($id);
+		// コメント数が０、かつ、スレッドが存在しない場合ホーム画面に遷移する
+		if( $comments->total() === 0 && is_null($thread) ) {
+			return redirect()->route('home');
+		};
 		$genre = Genre::find($thread->genre_id);
 		return view('comment/index', compact('comments', 'id', 'thread', 'genre'));
 	}
