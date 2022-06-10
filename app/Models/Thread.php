@@ -37,6 +37,9 @@ class Thread extends Model
     ];
 
 	use SoftDeletes;
+	use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+	protected $softCascade = ['comments'];
+
 	public function deleteThreadFindById($id)
 	{
 		return Thread::where([

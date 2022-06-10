@@ -36,21 +36,17 @@ class Comment extends Model
   */
   public function likes()
   {
-	  return $this->belongsToMany('App\Models\User', 'likes')->withTimestamps();
+	  return $this->belongsToMany(User::class, 'likes')->withTimestamps();
   }
 
   use SoftDeletes;
+
   public function deleteCommentFindById($id)
   {
 	  return Comment::where([
 		  'id' => $id
 	  ])->delete();
   }
-
-  public function users()
-    {
-        return $this->belongsToMany(User::class)->withTimestamps();
-    }
 
 	/**
      * そのコメントにユーザーがすでにいいねを押しているかチェック

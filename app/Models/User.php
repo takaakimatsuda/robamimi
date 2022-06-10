@@ -129,7 +129,7 @@ class User extends Authenticatable
 	//多対多のリレーションを書く
     public function likes()
     {
-        return $this->belongsToMany('App\Models\Comment','likes','user_id','comment_id')->withTimestamps();
+        return $this->belongsToMany(Comment::class,'likes','user_id','comment_id')->withTimestamps();
     }
 
     //この投稿に対して既にlikeしたかどうかを判別する
