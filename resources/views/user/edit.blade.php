@@ -22,8 +22,7 @@
 						@endif
 					</div>
 				</div>
-			<!-- 重要な箇所ここから -->
-			<form action="{{ route('users.postEdit') }}" method="POST" enctype="multipart/form-data">
+			<form action="{{ route('user.postEdit') }}" method="POST" enctype="multipart/form-data">
 				@csrf
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
@@ -42,13 +41,14 @@
 					</div>
 				</div>
 			</form>
-			<!-- <form action="{{ route('users.delete') }}" method="POST">
-			@csrf
-				<button type="submit"  class="btn btn-primary" >
-								退会する
-				</button>
-			</form> -->
-			<!-- 重要な箇所ここまで -->
+			<div class="mb-2 text-end">
+				<form action="{{ route('user.delete') }}" method="POST">
+				@csrf
+					<button type="submit"  class="btn btn-link" >
+						退会する
+					</button>
+				</form>
+			</div>
 			</div>
 		</div>
 	</div>

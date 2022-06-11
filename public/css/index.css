@@ -1,0 +1,31 @@
+img.icon.rounded-circle {
+	height: 64px;
+}
+
+button.trash {
+	border: none;
+	outline: none;
+	background: transparent;
+}
+
+button.trash:hover {
+	opacity: 0.5 ;
+}
+
+button.fas.fa-thumbs-up.mb-2 {
+	border: none;
+	outline: none;
+	background: transparent;
+}
+
+button.fas.fa-thumbs-up.mb-2:hover {
+	opacity: 0.5 ;
+}
+
+button.fas.fa-thumbs-up.mb-2.like-animation {
+	color: coral;
+}
+
+p.comment-text.text-xl {
+	white-space: pre-wrap;
+}

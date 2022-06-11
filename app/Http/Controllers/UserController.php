@@ -8,6 +8,7 @@ use InterventionImage;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
+
 class UserController extends Controller
 {
     protected $user;
@@ -27,7 +28,7 @@ class UserController extends Controller
 	{
 		$id = Auth::id();
 		$user = $this->user->selectUserFindById($id);
-		return view('users.edit', compact('user'));
+		return view('user.edit', compact('user'));
 	}
 
 	/**
@@ -62,7 +63,7 @@ class UserController extends Controller
 		}
 		// 再度編集画面へリダイレクト
 		session()->flash('flash_message', '更新しました');
-		return redirect()->route('users.edit', ['id' => $user['id']]);
+		return redirect()->route('user.edit', ['id' => $user['id']]);
 	}
 	/**
 	 * ユーザ削除関数

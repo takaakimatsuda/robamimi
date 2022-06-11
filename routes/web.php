@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\ThreadController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,13 +51,26 @@ Route::group(['middleware' => ['auth']], function () {
 	// Auth::routes();
 	Route::post('logout', [AuthController::class,'logout'])->name('logout');
 
-	Route::group(['prefix' => 'users'], function() {
-        Route::get('edit', [UserController::class,'getEdit'])->name('users.edit');
-        Route::post('edit', [UserController::class,'postEdit'])->name('users.postEdit');
-		Route::post('delete', [UserController::class,'delete'])->name('users.delete');
+	Route::group(['prefix' => 'user'], function() {
+        Route::get('edit', [UserController::class,'getEdit'])->name('user.edit');
+        Route::post('edit', [UserController::class,'postEdit'])->name('user.postEdit');
+		Route::post('delete', [UserController::class,'delete'])->name('user.delete');
     });
+	Route::prefix('thread')->name('thread.')->group(function () {
+		Route::post('/search', [ThreadController::class, 'search'])->name('search');
+		Route::get('/{genre}', [ThreadController::class, 'index'])->name('index');
+		Route::post('/{genre_id}', [ThreadController::class, 'store'])->name('store');
+		Route::delete('delete', [ThreadController::class, 'delete'])->name('delete');
+	});
+	Route::prefix('comment')->name('comment.')->group(function () {
+		Route::get('/{id}', [CommentController::class, 'index'])->name('index');
+		Route::post('/', [CommentController::class, 'store'])->name('store');
+		Route::delete('delete', [CommentController::class, 'delete'])->name('delete');
+	});
+	Route::get('rule', [App\Http\Controllers\RuleController::class, 'index'])->name('rule');
 
-
+	Route::post('/like/{commentId}',[LikeController::class,'store']);
+	Route::post('/unlike/{commentId}',[LikeController::class,'delete']);
 });
 
 Auth::routes();

@@ -9,6 +9,10 @@
 				<li>{{ $error }}</li>
 			</div>
 		@endforeach
+		<div class="flash_message  bg-secondary">
+			{{ session('flash_message') }}
+		</div>
+
 
 		<x-alert type="danger" :session="session('danger')"/>
 

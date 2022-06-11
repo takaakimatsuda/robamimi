@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateThreadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('threads', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('email')->unique();
-            $table->string('password');
-			$table->string('icon')->nullable();
+			$table->foreignId('user_id')->cascadeOnDelete()->comment('ユーザーのID')->constrained();
+			$table->string('title', 140)->comment('スレッドタイトル');
             $table->timestamps();
 
 			// 削除処理はソフトデリートであることを定義
@@ -33,8 +31,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+		Schema::dropIfExists('genres');
 		Schema::dropIfExists('threads');
-		Schema::dropIfExists('user_tokens');
-        Schema::dropIfExists('users');
     }
 }

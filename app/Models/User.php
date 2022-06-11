@@ -19,7 +19,8 @@ class User extends Authenticatable
      */
 
 
-    protected $fillable = [
+    protected $fillable =
+	[
         'name',
         'email',
         'password',
@@ -31,7 +32,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $hidden = [
+    protected $hidden =
+	[
         'password',
     ];
 
@@ -50,7 +52,8 @@ class User extends Authenticatable
 	public function selectUserFindById($id)
 	{
 		// 「SELECT id, name, email WHERE id = ?」を発行する
-		$query = $this->select([
+		$query = $this->select
+		([
 			'id',
 			'name',
 			'email',
@@ -98,10 +101,60 @@ class User extends Authenticatable
 	}
 
 	use SoftDeletes;
+	use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+	protected $softCascade = ['threads', 'comments'];
 	public function deleteUserFindById($id)
 	{
 		return $this->where([
 			'id' => $id
 		])->delete();
 	}
+
+	/**
+     * ユーザーに関連しているスレッドの取得
+     */
+    public function threads()
+    {
+        return $this->hasMany(Thread::class);
+    }
+
+	/**
+     * ユーザーに関連しているコメントの取得
+     */
+	public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+	//多対多のリレーションを書く
+    public function likes()
+    {
+        return $this->belongsToMany(Comment::class,'likes','user_id','comment_id')->withTimestamps();
+    }
+
+    //この投稿に対して既にlikeしたかどうかを判別する
+    public function isLike($commentId)
+    {
+    	return $this->likes()->where('comment_id',$commentId)->exists();
+    }
+
+    //isLikeを使って、既にlikeしたか確認したあと、いいねする（重複させない）
+    public function like($commentId)
+    {
+    	if($this->isLike($commentId)){
+        //もし既に「いいね」していたら何もしない
+      } else {
+    	$this->likes()->attach($commentId);
+      }
+    }
+
+    //isLikeを使って、既にlikeしたか確認して、もししていたら解除する
+    public function unlike($commentId)
+    {
+    	if($this->isLike($commentId)){
+        //もし既に「いいね」していたら消す
+        $this->likes()->detach($commentId);
+    	} else {
+    	}
+    }
 }
