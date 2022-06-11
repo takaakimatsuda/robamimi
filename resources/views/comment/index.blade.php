@@ -35,7 +35,7 @@
 				{{-- スレッド --}}
 				<p class="fw-bold d-inline-block col-1 text-start fs-5 mb-1">{{$comment->user->name}}</p>
 				<p class="d-inline-block text-start col-4 text-secondary mb-0">{{$comment->created_at->format('m-d H:i');}}</p>
-				<p class="text-xl">{{$comment->contents}}</p>
+				<p class="comment-text text-xl">{{$comment->contents}}</p>
 				{{-- いいね機能 --}}
 				<like-component :comment={{$comment}} :likes_count={{$comment->likes_count}}></like-component>
 			</div>
@@ -56,7 +56,7 @@
 		<form action="{{ route('comment.store',['thread_id' => $id]) }}" method="POST">
 			@csrf
 			<div>
-				<input type="text" class="form-control" name="contents" placeholder="コメントを作成する" autofocus/>
+				<textarea type="text" rows="3" class="form-control" name="contents" placeholder="コメントを作成する"></textarea>
 			</div>
 			<div class="text-end mt-1 rounded">
 				<button class="btn-success text-end rounded">送信</button>

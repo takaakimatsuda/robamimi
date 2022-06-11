@@ -25,3 +25,7 @@ button.fas.fa-thumbs-up.mb-2:hover {
 button.fas.fa-thumbs-up.mb-2.like-animation {
 	color: coral;
 }
+
+p.comment-text.text-xl {
+	white-space: pre-wrap;
+}
