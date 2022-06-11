@@ -4,14 +4,15 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-		<div class="flash_message  bg-secondary">
-			{{ session('flash_message') }}
-		</div>
 		@foreach ($errors->all() as $error)
 			<div class="login-alert alert-danger">
 				<li>{{ $error }}</li>
 			</div>
 		@endforeach
+		<div class="flash_message  bg-secondary">
+			{{ session('flash_message') }}
+		</div>
+
 
 		<x-alert type="danger" :session="session('danger')"/>
 

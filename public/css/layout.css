@@ -1,0 +1,152 @@
+body {
+  background-color: white;
+}
+
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1900px;
+  }
+}
+
+.form-search {
+  display: block;
+  width: 300%;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #212529;
+  background-color: #f8fafc;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 2.50rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+form {
+	display: block;
+	margin-top: 0em;
+	margin-block-end: 0em;
+}
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.navbar {
+	background-color: #8C5F35;
+}
+
+.navbar-brand {
+  margin-right: 9rem;
+  font-size: 1.7rem;
+	font-family: Yuji Boku;
+}
+
+.card {
+	display: block;
+  border-radius: 2.5rem;
+	width: 650px;
+  height: 550px;
+  margin-top: 100px;
+	text-align: center;
+}
+
+.py-4 {
+	margin-left: 230px;
+}
+
+.form-signin input[type="email"] {
+	margin: 10px 0;
+}
+
+.form-signin input[type="password"] {
+	margin: 10px 0;
+}
+
+/* ボタン押下時の半透明設定 */
+
+a.navbar-brand:hover {
+	opacity: 0.5;
+}
+
+span.p-channel_sidebar__cinema:hover {
+	opacity: 0.5;
+}
+
+span.p-channel_sidebar__anime:hover {
+	opacity: 0.5;
+}
+
+span.p-channel_sidebar__manga:hover {
+	opacity: 0.5;
+}
+
+span.p-channel_sidebar__live:hover {
+	opacity: 0.5;
+}
+
+span.p-channel_sidebar__rule:hover {
+	opacity: 0.5;
+}
+
+a#navbarDropdown:hover {
+	opacity: 0.5;
+}
+/* サイドバー関連 */
+
+.sidebar {
+	position: fixed;
+  width: 230px;
+  height: 932px;
+	padding-top: 100px;
+  background-color: #8C5F35;
+}
+
+.p-channel_sidebar__name {
+	margin-right: auto;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	opacity: 1;
+}
+
+.sidebar li {
+	list-style:none;
+	padding:20px;
+  margin: 12px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+span.p-channel_sidebar__rule {
+	color: lightslategray;
+}
+
+i.fas.fa-bell.fa-lg {
+	margin-right: 5px;
+}
+
+i.fas.fa-film.fa-lg {
+	margin-right: 5px;
+}
+
+i.fas.fa-robot.fa-lg {
+	margin-right: 5px;
+}
+
+i.fas.fa-book-reader.fa-lg {
+	margin-right: 5px;
+}
+
+i.fas.fa-microphone.fa-lg {
+	margin-right: 5px;
+}
+
+i.fas.fa-question.fa-lg {
+	margin-right: 5px;
+}
