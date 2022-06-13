@@ -15,6 +15,10 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->nullable(false);
+            $table->integer('comment_id');
+            $table->integer('like_id');
+            $table->timestamp('read_at');
             $table->timestamps();
         });
     }
