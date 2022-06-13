@@ -41,9 +41,9 @@ class Comment extends Model
 
   use SoftDeletes;
 
-  public function deleteCommentFindById($id)
+  public static function deleteCommentFindById($id)
   {
-	  return Comment::where([
+	  return self::where([
 		  'id' => $id
 	  ])->delete();
   }
