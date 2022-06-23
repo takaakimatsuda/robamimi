@@ -47,7 +47,6 @@ class UserController extends Controller
 		if (isset($image)){
 		// 画像をトリミングする
 		InterventionImage::make($image)->fit(300, 300)->save($image);
-
 		// バケットの/フォルダへアップロード
 		$path = Storage::disk('s3')->putFile('/', $image, 'public');
 		// アップロードした画像のバスを取得
