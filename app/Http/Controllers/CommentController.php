@@ -42,12 +42,6 @@ class CommentController extends Controller
 	public function delete(Request $request)
 	{
 		$commentId = $request->comment;
-		$notification = Notification::where('comment_id',$commentId)->first();
-		// 通知が未読の場合、通知を削除する
-		dd($notification);
-		if(is_null($notification->read_at)){
-			Comment::deleteNotificationComment($commentId);
-		}
 		Comment::deleteCommentFindById($commentId);
 		return back();
 	}

@@ -74,6 +74,10 @@ a.navbar-brand:hover {
 	opacity: 0.5;
 }
 
+span.p-channel_sidebar__notification:hover {
+	opacity: 0.5;
+}
+
 span.p-channel_sidebar__cinema:hover {
 	opacity: 0.5;
 }

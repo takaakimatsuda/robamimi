@@ -16,4 +16,20 @@ class Like extends Model
 		$notification->save();
 	}
 
+	/**
+	* いいねを所有しているユーザーの取得
+	*/
+  public function user()
+  {
+	  return $this->belongsTo(User::class);
+  }
+
+  	/**
+	* いいねを所有しているユーザーの取得
+	*/
+	public function comment()
+	{
+		return $this->belongsTo(Comment::class);
+	}
+
 }

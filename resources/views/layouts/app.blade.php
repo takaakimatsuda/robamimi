@@ -83,7 +83,7 @@
 
 				<div class="sidebar" >
 					<ul>
-						<li><span class="p-channel_sidebar__notification"><i class="fas fa-bell fa-lg"></i>お知らせ</span></li>
+						<li><a class="text-decoration-none link-dark" href="{{ route('home') }}"><span class="p-channel_sidebar__notification"><i class="fas fa-bell fa-lg"></i>お知らせ</span></a></li>
 						<li><a class="text-decoration-none link-dark" href="{{ route('thread.index', ['genre'=>'eiga']) }}"><span class="p-channel_sidebar__cinema"><i class="fas fa-film fa-lg"></i>映画</span></a></li>
 						<li><a class="text-decoration-none link-dark" href="{{ route('thread.index', ['genre'=>'anime']) }}"><span class="p-channel_sidebar__anime"><i class="fas fa-robot fa-lg"></i>アニメ</span></a></li>
 						<li><a class="text-decoration-none link-dark" href="{{ route('thread.index', ['genre'=>'manga']) }}"><span class="p-channel_sidebar__manga"><i class="fas fa-book-reader fa-lg"></i>漫画</span></a></li>

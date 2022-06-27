@@ -28,6 +28,15 @@ class Notification extends Model
 		return $this->belongsTo(Comment::class);
     }
 
+	/**
+    * 通知を所有しているいいねの取得
+    */
+    public function like()
+    {
+		return $this->belongsTo(Like::class);
+    }
+
+
     /**
     * 通知を所有しているスレッドの取得
     */

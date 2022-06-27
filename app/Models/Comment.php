@@ -75,8 +75,8 @@ class Comment extends Model
 		$notification->save();
 	}
 
-	public static function deleteNotificationComment($commentId){
-		Notification::where('comment_id',$commentId)->delete();
-	}
+	// コメントが削除された場合、通知レコードも削除
+	use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+	protected $softCascade = ['notifications'];
 
 }
