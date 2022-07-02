@@ -36,11 +36,15 @@ body {
   z-index: 2;
 }
 
-h2.login-title {
-	margin-bottom: 4rem;
+h3.login-title {
+	margin-bottom: 1rem;
 	margin-top: 4rem;
 	font-weight: bold;
 	color: darkgray;
+}
+
+li.login-detail {
+	font-weight: bold;
 }
 
 button.login-btn.btn-lg.btn-warning {
