@@ -26,10 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+		// 現在時刻$carbonを作成
+		$carbon = new Carbon('now');
+
+		// 未読通知を既読状態にする
+		Notification::with('comment.user')->where('user_id', Auth::user()->id)->whereNull('read_at')->update([
+			'read_at' => $carbon
+		]);
 		// ログインユーザーが受け取っている通知を取り出す
 		$notifications = Notification::with('comment.user')->with('like.user')->with('like.comment')->orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->paginate(20);
-		// 通知時刻と現在時刻を比較する$carbonを作成
-		$carbon = new Carbon('now');
         return view('home', compact('notifications','carbon'));
     }
 }

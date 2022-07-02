@@ -154,3 +154,7 @@ i.fas.fa-microphone.fa-lg {
 i.fas.fa-question.fa-lg {
 	margin-right: 5px;
 }
+
+span.badge.rounded-pill.bg-info {
+	vertical-align: text-top;
+}
