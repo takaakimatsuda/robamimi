@@ -40,10 +40,19 @@ class Thread extends Model
 	use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
 	protected $softCascade = ['comments'];
 
-	public function deleteThreadFindById($id)
+	public static function deleteThreadFindById($id)
 	{
 		return Thread::where([
 			'id' => $id
 		])->delete();
 	}
+
+	/**
+     * スレッドに関連している通知の取得
+     */
+	public function notifications()
+	{
+		return $this->hasMany(Notification::class);
+	}
+
 }

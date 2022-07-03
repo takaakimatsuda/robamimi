@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Genre;
+use App\Models\Thread;
+use App\Models\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,14 +19,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-			'name' => 'test',
+			'name' => '山田一郎',
 			'email' => 'test@test.com',
 			'password' => Hash::make('password'),
 		]);
 		User::create([
-			'name' => 'test2',
+			'name' => '佐藤二郎',
 			'email' => 'test2@test.com',
 			'password' => Hash::make('password'),
+			'icon' => 'https://s3-ap-northeast-1.amazonaws.com/robamimi-backet/1VeVincz3Gesq5SD5lOBKI5FRFDoAeScXE2AMWRq.jpg',
+		]);
+		User::create([
+			'name' => '北島三郎',
+			'email' => 'test3@test.com',
+			'password' => Hash::make('password'),
+			'icon' => 'https://s3-ap-northeast-1.amazonaws.com/robamimi-backet/79EAVkePq4en75EpYye8ZsaW7qk5vYAWEOpPeyl3.jpg',
 		]);
 		Genre::create([
 			'name' => 'eiga',
@@ -41,6 +50,36 @@ class DatabaseSeeder extends Seeder
 		Genre::create([
 			'name' => 'live',
 			'detail' => 'LIVE',
+		]);
+		Thread::create([
+			'user_id' => 1,
+			'title' => 'スパイダーマン',
+			'genre_id' => 1,
+		]);
+		Thread::create([
+			'user_id' => 2,
+			'title' => 'ショーシャンクの空に',
+			'genre_id' => 1,
+		]);
+		Thread::create([
+			'user_id' => 3,
+			'title' => 'となりのトトロ',
+			'genre_id' => 1,
+		]);
+		Comment::create([
+			'thread_id' => 1,
+			'user_id' => 1,
+			'contents' => 'おもしろかった！',
+		]);
+		Comment::create([
+			'thread_id' => 1,
+			'user_id' => 2,
+			'contents' => 'アクションシーンがいいですよね！',
+		]);
+		Comment::create([
+			'thread_id' => 1,
+			'user_id' => 3,
+			'contents' => 'わかります！',
 		]);
     }
 }

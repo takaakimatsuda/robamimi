@@ -4,9 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap'
-import Vue from 'vue'
-import LikeComponent from './components/LikeComponent'
+import './bootstrap';
+import Vue from 'vue';
+import LikeComponent from './components/LikeComponent';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

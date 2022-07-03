@@ -1,5 +1,5 @@
 <template>
-	<button class="fas fa-thumbs-up mb-2" @click="onLikeClick(clickedComment)" :class="{ 'like-animation': clickedComment.liked_by_user }"> {{count}}</button>
+	<button class="fas fa-thumbs-up mb-2" @click="onLikeClick()" :class="{ 'like-animation': islike }"> {{count}}</button>
 </template>
 <script>
     export default {
@@ -9,34 +9,34 @@
 	    },
         data() {
             return {
-				clickedComment: this.comment,
+				islike: this.comment.liked_by_user,
 				count: this.likes_count,
 			};
         },
         methods: {
-			onLikeClick(clickedComment) {
-				if(clickedComment.liked_by_user) {
-					this.unlike(clickedComment.id)
+			onLikeClick() {
+				if(this.islike) {
+					this.unlike(this.comment.id)
 				}
 				else {
-					this.like(clickedComment.id)
+					this.like(this.comment.id)
 				}
 				},
-            like(commentId) {
-                axios.post(`/like/${commentId}`).then(({ data }) => {
+            like() {
+                axios.post(`/like/${this.comment.id}`).then(({ data }) => {
                 	console.log(data);
                 }).then(response=>{
 					++this.count
-					this.clickedComment.liked_by_user = true
+					this.islike = true
 				}).catch(err => {
 				});
             },
-			unlike(commentId) {
-                axios.post(`/unlike/${commentId}`).then(({ data }) => {
+			unlike() {
+                axios.post(`/unlike/${this.comment.id}`).then(({ data }) => {
                     console.log(data);
                 }).then(response=>{
 					--this.count
-					this.clickedComment.liked_by_user = false
+					this.islike = false
 				}).catch(err => {
 				});
             },

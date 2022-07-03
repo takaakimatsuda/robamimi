@@ -18,7 +18,7 @@
 			</div>
 			<div class="bg-white rounded-md p-2 col-8">
 				{{-- スレッド --}}
-				<p class="fw-bold d-inline-block mb-1 col-1 text-start fs-5">{{$thread->user->name}}</p>
+				<p class="fw-bold d-inline-block mb-1 col-1 text-start fs-6">{{$thread->user->name}}</p>
 				<p class="d-inline-block text-start col-4 text-secondary mb-0">{{$thread->created_at->format('m-d H:i');}}</p>
 				<p class="mb-2 text-xl">{{$thread->title}}</p>
 				@if ($thread->comments_count !== 0)

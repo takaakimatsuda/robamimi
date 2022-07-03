@@ -41,10 +41,10 @@ class Comment extends Model
 
   use SoftDeletes;
 
-  public function deleteCommentFindById($id)
+  public static function deleteCommentFindById($commentId)
   {
-	  return Comment::where([
-		  'id' => $id
+	  return self::where([
+		  'id' => $commentId
 	  ])->delete();
   }
 
@@ -59,4 +59,24 @@ class Comment extends Model
             return $user->id === Auth::user()->id;
         });
     }
+
+	/**
+     * コメントに関連している通知の取得
+     */
+	public function notifications()
+	{
+		return $this->hasMany(Notification::class);
+	}
+
+	public function createNotificationComment(){
+		$notification = new Notification();
+		$notification->user_id = Thread::find($this->thread_id)->user_id;
+		$notification->comment_id = $this->id;
+		$notification->save();
+	}
+
+	// コメントが削除された場合、通知レコードも削除
+	use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+	protected $softCascade = ['notifications'];
+
 }

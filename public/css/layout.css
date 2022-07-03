@@ -74,6 +74,10 @@ a.navbar-brand:hover {
 	opacity: 0.5;
 }
 
+span.p-channel_sidebar__notification:hover {
+	opacity: 0.5;
+}
+
 span.p-channel_sidebar__cinema:hover {
 	opacity: 0.5;
 }
@@ -149,4 +153,8 @@ i.fas.fa-microphone.fa-lg {
 
 i.fas.fa-question.fa-lg {
 	margin-right: 5px;
+}
+
+span.badge.rounded-pill.bg-info {
+	vertical-align: text-top;
 }

@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::post('/', [CommentController::class, 'store'])->name('store');
 		Route::delete('delete', [CommentController::class, 'delete'])->name('delete');
 	});
-	Route::get('rule', [App\Http\Controllers\RuleController::class, 'index'])->name('rule');
+	Route::get('/rule', [App\Http\Controllers\RuleController::class, 'index'])->name('rule.index');
 
 	Route::post('/like/{commentId}',[LikeController::class,'store']);
 	Route::post('/unlike/{commentId}',[LikeController::class,'delete']);
