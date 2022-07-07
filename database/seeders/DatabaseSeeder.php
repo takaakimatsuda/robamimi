@@ -35,6 +35,11 @@ class DatabaseSeeder extends Seeder
 			'password' => Hash::make('password'),
 			'icon' => 'https://s3-ap-northeast-1.amazonaws.com/robamimi-backet/79EAVkePq4en75EpYye8ZsaW7qk5vYAWEOpPeyl3.jpg',
 		]);
+		User::create([
+			'name' => 'ゲストユーザー',
+			'email' => 'guest@guest.com',
+			'password' => Hash::make('password'),
+		]);
 		Genre::create([
 			'name' => 'eiga',
 			'detail' => '映画',
