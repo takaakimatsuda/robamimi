@@ -19,7 +19,7 @@
 		<div class="card">
 			<form class="form-signin" method="POST" action="{{ route('login') }}">
 				@csrf
-				<h3 class="login-title">『ロバミミ』はネタバレ防止型SNSです</h1>
+				<h3 class="login-title">『ロバミミ』はスレッド型SNSです</h1>
 				<li class="login-detail">話したいジャンルでスレッドを立てます。</li>
 				<li class="login-detail">スレッドの中で感想を話し合います。</li>
 				<li class="login-detail">ネタバレを気にせず交流しましょう！</li>
