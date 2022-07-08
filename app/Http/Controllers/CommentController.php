@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Thread;
 use App\Models\Genre;
-use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller

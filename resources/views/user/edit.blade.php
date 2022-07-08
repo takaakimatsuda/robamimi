@@ -31,10 +31,21 @@
 						<div class="default-image mt-1">
 							<input type="checkbox" name="defaultImage">アイコンをデフォルトに戻す
 						</div>
+						@if (Auth::id() == 4)
+							<p class="text-danger">※ゲストユーザーは、ユーザー名とメールアドレスを編集できません。</p>
+						@endif
 							<p class="username-title">ユーザーネーム</p>
-						<input type="text" name="name" class="form-control " value="{{ $user->name }}" placeholder="ユーザーネーム" />
+						@if (Auth::id() == 4)
+							<input type="text" name="name" class="form-control " value="{{ $user->name }}" placeholder="ユーザーネーム" readonly/>
+						@else
+							<input type="text" name="name" class="form-control " value="{{ $user->name }}" placeholder="ユーザーネーム" />
+						@endif
 						<p class="mailaddress-title">メールアドレス</p>
-						<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" /><br />
+						@if (Auth::id() == 4)
+							<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" readonly/><br />
+						@else
+							<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" /><br />
+						@endif
 						<button type="submit"  class="btn btn-primary" >
 							更新する
 						</button>

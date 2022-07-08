@@ -7,6 +7,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +22,10 @@ use App\Http\Controllers\LikeController;
 Route::group(['middleware' => ['guest']], function () {
     // ログインフォーム表示
 	Route::get('/', [AuthController::class,'showLogin'])->name('login.show');
-
+	# ゲストユーザーログイン
+	Route::get('guest', [LoginController::class, 'guestLogin'])->name('login.guest');
 	// ログイン処理
 	Route::post('login',[AuthController::class, 'login'])->name('login');
-
 	// パスワードリセット関連
 	Route::prefix('password_reset')->name('password_reset.')->group(function () {
 	Route::prefix('email')->name('email.')->group(function () {
@@ -50,7 +51,6 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 	// Auth::routes();
 	Route::post('logout', [AuthController::class,'logout'])->name('logout');
-
 	Route::group(['prefix' => 'user'], function() {
         Route::get('edit', [UserController::class,'getEdit'])->name('user.edit');
         Route::post('edit', [UserController::class,'postEdit'])->name('user.postEdit');

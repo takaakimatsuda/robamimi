@@ -49,13 +49,12 @@ li.login-detail {
 
 button.login-btn.btn-lg.btn-warning {
 	color: white;
-	font-weight: bold;
-	margin: 10px 0
+	margin: 10px 0;
+	margin-left: 166px;
 }
 
 a.register-btn.btn-lg.btn-info {
 	color: white;
-	font-weight: bold;
 	text-decoration: none;
 	width: 110px;
   margin-left: 118px;
@@ -63,13 +62,14 @@ a.register-btn.btn-lg.btn-info {
 }
 
 a.pass-forget-btn.btn-lg.btn-success {
-	font-weight: bold;
 	font-size: 0.8rem;
 	text-decoration: none;
 	margin-right: -50px;
 	width: 100px;
 	border: outset;
 }
+
+
 
 i.fab.fa-twitter.fa-3x {
 	margin: 0 10px;
