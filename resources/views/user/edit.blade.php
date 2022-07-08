@@ -10,6 +10,15 @@
 			{{ session('flash_message') }}
 		</div>
 	@endif
+	@if ($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
 		<div class="card">
 			<div class="card-body">
 				<div class="row mb-3">
@@ -26,7 +35,7 @@
 				@csrf
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
-						<h7 class="icon-title">アイコンを更新する場合は画像を設定してください</h7>
+						<h7 class="icon-title fw-bold">アイコンを更新する場合は画像を設定してください</h7>
 						<input id="image" type="file" name="image"><br>
 						<div class="default-image mt-1">
 							<input type="checkbox" name="defaultImage">アイコンをデフォルトに戻す
@@ -52,14 +61,17 @@
 					</div>
 				</div>
 			</form>
-			<div class="mb-2 text-end">
-				<form action="{{ route('user.delete') }}" method="POST">
-				@csrf
-					<button type="submit"  class="btn btn-link" >
-						退会する
-					</button>
-				</form>
-			</div>
+			@if (Auth::id() == 4)
+			@else
+				<div class="mb-2 text-end">
+					<form action="{{ route('user.delete') }}" method="POST">
+					@csrf
+						<button type="submit"  class="btn btn-link" >
+							退会する
+						</button>
+					</form>
+				</div>
+			@endif
 			</div>
 		</div>
 	</div>

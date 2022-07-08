@@ -4,10 +4,6 @@ img.icon {
 	height: 111px;
 }
 
-h7.icon-title {
-	font-weight: bold;
-}
-
 p.username-title {
 	margin-top: 1rem;
 	text-align: left;
@@ -23,4 +19,8 @@ p.mailaddress-title {
 	color: white;
 	text-align: center;
 	font-weight: bold;
+}
+
+.alert.alert-danger {
+	margin-top: 40px;
 }

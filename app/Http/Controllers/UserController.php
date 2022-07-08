@@ -7,7 +7,7 @@ use App\Models\User;
 use InterventionImage;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Requests\UserEditRequest;
 
 class UserController extends Controller
 {
@@ -35,7 +35,7 @@ class UserController extends Controller
 	 * ユーザ更新関数
 	 */
 
-	public function postEdit(Request $request)
+	public function postEdit(UserEditRequest $request)
 	{
 		// ログインidのデータを取得
 		$user = Auth::user();
@@ -45,16 +45,16 @@ class UserController extends Controller
 		$image = $request->file('image');
 	// $imageに値が入っている場合、s3アップロード開始
 		if (isset($image)){
-		// 画像をトリミングする
-		InterventionImage::make($image)->fit(300, 300)->save($image);
-		// バケットの/フォルダへアップロード
-		$path = Storage::disk('s3')->putFile('/', $image, 'public');
-		// アップロードした画像のバスを取得
-		$icon = Storage::disk('s3')->url($path);
-		$this->user->updateUserIconFindById($post, $user, $icon);
+			// 画像をトリミングする
+			InterventionImage::make($image)->fit(300, 300)->save($image);
+			// バケットの/フォルダへアップロード
+			$path = Storage::disk('s3')->putFile('/', $image, 'public');
+			// アップロードした画像のバスを取得
+			$icon = Storage::disk('s3')->url($path);
+			$this->user->fill($request->validated())->updateUserIconFindById($post, $user, $icon);
 		} else {
-		// DBへ更新依頼
-		$this->user->updateUserFindById($post, $user);
+			// DBへ更新依頼
+			$this->user->fill($request->validated())->updateUserFindById($post, $user);
 		}
 		// アイコンにデフォルト画像にするチェックが入っていた場合、DBのiconを消去
 		if (isset($post['defaultImage'])){
