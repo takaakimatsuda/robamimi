@@ -10,6 +10,15 @@
 			{{ session('flash_message') }}
 		</div>
 	@endif
+	@if ($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
 		<div class="card">
 			<div class="card-body">
 				<div class="row mb-3">
@@ -26,29 +35,43 @@
 				@csrf
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
-						<h7 class="icon-title">アイコンを更新する場合は画像を設定してください</h7>
+						<h7 class="icon-title fw-bold">アイコンを更新する場合は画像を設定してください</h7>
 						<input id="image" type="file" name="image"><br>
 						<div class="default-image mt-1">
 							<input type="checkbox" name="defaultImage">アイコンをデフォルトに戻す
 						</div>
+						@if (Auth::id() == 4)
+							<p class="text-danger">※ゲストユーザーは、ユーザー名とメールアドレスを編集できません。</p>
+						@endif
 							<p class="username-title">ユーザーネーム</p>
-						<input type="text" name="name" class="form-control " value="{{ $user->name }}" placeholder="ユーザーネーム" />
+						@if (Auth::id() == 4)
+							<input type="text" name="name" class="form-control " value="{{ $user->name }}" placeholder="ユーザーネーム" readonly/>
+						@else
+							<input type="text" name="name" class="form-control " value="{{ $user->name }}" placeholder="ユーザーネーム" />
+						@endif
 						<p class="mailaddress-title">メールアドレス</p>
-						<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" /><br />
+						@if (Auth::id() == 4)
+							<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" readonly/><br />
+						@else
+							<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" /><br />
+						@endif
 						<button type="submit"  class="btn btn-primary" >
 							更新する
 						</button>
 					</div>
 				</div>
 			</form>
-			<div class="mb-2 text-end">
-				<form action="{{ route('user.delete') }}" method="POST">
-				@csrf
-					<button type="submit"  class="btn btn-link" >
-						退会する
-					</button>
-				</form>
-			</div>
+			@if (Auth::id() == 4)
+			@else
+				<div class="mb-2 text-end">
+					<form action="{{ route('user.delete') }}" method="POST">
+					@csrf
+						<button type="submit"  class="btn btn-link" >
+							退会する
+						</button>
+					</form>
+				</div>
+			@endif
 			</div>
 		</div>
 	</div>

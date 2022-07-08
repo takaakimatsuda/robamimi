@@ -29,10 +29,14 @@
 				<label for="inputPassword" class="sr-only">Password</label>
 				<input type="password" id="inputPassword" name="password" class="form-control" placeholder="パスワード" required>
 				<!-- <i class="fab fa-twitter fa-3x"></i><i class="fab fa-instagram fa-3x"></i><br> -->
-				<button class="login-btn btn-lg btn-warning" type="submit">ログイン</button><br>
+				<button class="login-btn btn-lg btn-warning fw-bold" type="submit">ログイン</button>
+				<a class="guest-btn btn-lg btn-primary fw-bold text-white text-decoration-none" href="{{ route('login.guest') }}">
+					ゲストログイン
+				</a>
+				<br>
 			</form>
-			<a class="register-btn btn-lg btn-info" href="{{ route('register') }}">新規登録</a>
-			<a class="pass-forget-btn btn-lg btn-success" href="{{ route('password_reset.email.form') }}">パスワードを忘れた方</a>
+			<a class="register-btn btn-lg btn-info fw-bold" href="{{ route('register') }}">新規登録</a>
+			<a class="pass-forget-btn btn-lg btn-success fw-bold" href="{{ route('password_reset.email.form') }}">パスワードを忘れた方</a>
 		</div>
 	</div>
 </div>
