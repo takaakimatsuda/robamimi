@@ -47,6 +47,10 @@ li.login-detail {
 	font-weight: bold;
 }
 
+a.fab.fa-twitter.fa-3x.text-decoration-none {
+	color: rgba(0, 172, 237, 1);
+}
+
 button.login-btn.btn-lg.btn-warning {
 	color: white;
 	margin: 10px 0;

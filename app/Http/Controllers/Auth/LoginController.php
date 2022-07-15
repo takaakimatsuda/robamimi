@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -52,4 +55,41 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+	// Twitterログイン処理
+	public function redirectToTwitterProvider()
+	{
+		return Socialite::driver('twitter')->redirect();
+	}
+
+	public function handleTwitterProviderCallback(){
+		try {
+			$twitter_user = Socialite::with("twitter")->user();
+		}
+		catch (\Exception $e) {
+			return redirect('/')->with('oauth_error', 'ログインに失敗しました');
+			// エラーならログイン画面へ転送
+		}
+		if(User::withTrashed()->where('email', $twitter_user->getEmail())->exists()){
+			//ツイッターで作成されたユーザーならそのままパスする
+            $user = User::withTrashed()->where('email', $twitter_user->getEmail())->first();
+            if(!$user->twitter && is_null($user->deleted_at)){
+				session()->flash('flash_message', 'すでに同じメールアドレスが登録されています。');
+				return redirect()->to('/');
+            }
+			// 退会処理済みのユーザーであれば再入会する
+			if(User::onlyTrashed()->where('email', $twitter_user->getEmail())->exists()){
+				User::onlyTrashed()->where('email', $twitter_user->getEmail())->first()->restore();
+			}
+		}
+		$my_information = User::firstOrCreate(['token' => $twitter_user->token ],
+		['name' => $twitter_user->getName(),
+		'email' => $twitter_user->getEmail(),
+		'icon' => str_replace("_normal.", ".",$twitter_user->getAvatar()),
+		'password' => md5(Str::uuid()),
+		'twitter' => true,
+		]);
+		Auth::login($my_information);
+		return redirect()->to('/'); // homeへ転送
+	}
 }

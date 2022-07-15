@@ -8,6 +8,9 @@ use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RuleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +29,9 @@ Route::group(['middleware' => ['guest']], function () {
 	Route::get('guest', [LoginController::class, 'guestLogin'])->name('login.guest');
 	// ログイン処理
 	Route::post('login',[AuthController::class, 'login'])->name('login');
+	// Twitterログイン処理
+	Route::get('login/twitter', [LoginController::class, 'redirectToTwitterProvider'])->name('login.twitter');
+	Route::get('login/twitter/callback', [LoginController::class, 'handleTwitterProviderCallback']);
 	// パスワードリセット関連
 	Route::prefix('password_reset')->name('password_reset.')->group(function () {
 	Route::prefix('email')->name('email.')->group(function () {
@@ -48,7 +54,7 @@ Route::group(['middleware' => ['guest']], function () {
 // ログイン時のみの表示
 Route::group(['middleware' => ['auth']], function () {
 	// ホーム画面
-	Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	Route::get('home', [HomeController::class, 'index'])->name('home');
 	// Auth::routes();
 	Route::post('logout', [AuthController::class,'logout'])->name('logout');
 	Route::group(['prefix' => 'user'], function() {
@@ -67,7 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::post('/', [CommentController::class, 'store'])->name('store');
 		Route::delete('delete', [CommentController::class, 'delete'])->name('delete');
 	});
-	Route::get('/rule', [App\Http\Controllers\RuleController::class, 'index'])->name('rule.index');
+	Route::get('/rule', [RuleController::class, 'index'])->name('rule.index');
 
 	Route::post('/like/{commentId}',[LikeController::class,'store']);
 	Route::post('/unlike/{commentId}',[LikeController::class,'delete']);
@@ -75,4 +81,4 @@ Route::group(['middleware' => ['auth']], function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

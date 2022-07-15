@@ -64,11 +64,9 @@
 			@if (Auth::id() == 4)
 			@else
 				<div class="mb-2 text-end">
-					<form action="{{ route('user.delete') }}" method="POST">
+					<form action="{{ route('user.delete') }}" name="form_delete" method="POST">
 					@csrf
-						<button type="submit"  class="btn btn-link" >
-							退会する
-						</button>
+						<a href="#" class="btn btn-link" onclick="deletePost(this);">退会する</a>
 					</form>
 				</div>
 			@endif
@@ -76,4 +74,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function deletePost(e) {
+		'use strict';
+		if (confirm('本当に退会してよろしいですか？')) {
+			document.form_delete.submit();
+		}
+	}
+</script>
+
 @endsection

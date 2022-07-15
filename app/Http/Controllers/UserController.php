@@ -22,7 +22,7 @@ class UserController extends Controller
 	}
 
 	/**
-	 * 画面表示件データ一件取得用
+	 * 画面表示データ一件取得用
 	 */
 	public function getEdit()
 	{
