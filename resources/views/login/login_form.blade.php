@@ -28,7 +28,9 @@
 				<input type="email" id="inputEmail" name="email" class="form-control" placeholder="メールアドレス" required autofocus>
 				<label for="inputPassword" class="sr-only">Password</label>
 				<input type="password" id="inputPassword" name="password" class="form-control" placeholder="パスワード" required>
-				<!-- <i class="fab fa-twitter fa-3x"></i><i class="fab fa-instagram fa-3x"></i><br> -->
+				<div>
+					<a class="fab fa-twitter fa-3x text-decoration-none" href="{{ route('login.twitter') }}"></a>
+				</div>
 				<button class="login-btn btn-lg btn-warning fw-bold" type="submit">ログイン</button>
 				<a class="guest-btn btn-lg btn-primary fw-bold text-white text-decoration-none" href="{{ route('login.guest') }}">
 					ゲストログイン

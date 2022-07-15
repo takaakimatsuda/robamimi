@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
 			$table->string('icon')->nullable();
+			$table->string('token')->nullable();
+			$table->boolean('twitter')->default(false);
             $table->timestamps();
 
 			// 削除処理はソフトデリートであることを定義
