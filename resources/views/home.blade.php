@@ -3,6 +3,11 @@
 
 @section('content')
 <div class="container">
+	@if (session('flash_message'))
+		<div class="flash_message  bg-success">
+			{{ session('flash_message') }}
+		</div>
+	@endif
 <div class="mt-5 pt-2 text-left border-bottom">
 		<p class="h4 fw-bold">通知</p>
 	</div>

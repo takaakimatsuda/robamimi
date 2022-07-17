@@ -13,7 +13,6 @@
 			{{ session('flash_message') }}
 		</div>
 
-
 		<x-alert type="danger" :session="session('danger')"/>
 
 		<div class="card">

@@ -78,9 +78,21 @@ class User extends Authenticatable
 			'id' => $user['id']
 		])->update([
 			'name' => $post['name'],
-			'email' => $post['email'],
 		]);
 	}
+
+		/**
+ * IDで指定したメールアドレスを更新する
+ */
+public function updateMailFindById($post, $user)
+{
+	return $this->where([
+		'id' => $user['id']
+	])->update([
+		'email' => $post['email'],
+	]);
+}
+
 		/**
  * IDで指定したユーザ画像を更新する
  */
@@ -91,7 +103,6 @@ class User extends Authenticatable
 		])->update([
 			'icon' => $icon,
 			'name' => $post['name'],
-			'email' => $post['email'],
 		]);
 	}
 

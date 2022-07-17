@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
-			<!-- フラッシュメッセージ -->
+	<!-- フラッシュメッセージ -->
 	@if (session('flash_message'))
 		<div class="flash_message  bg-success">
 			{{ session('flash_message') }}
@@ -31,7 +31,7 @@
 						@endif
 					</div>
 				</div>
-			<form action="{{ route('user.postEdit') }}" method="POST" enctype="multipart/form-data">
+			<form action="{{ route('user.postUserEdit') }}" method="POST" enctype="multipart/form-data">
 				@csrf
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
@@ -49,14 +49,20 @@
 						@else
 							<input type="text" name="name" class="form-control " value="{{ $user->name }}" placeholder="ユーザーネーム" />
 						@endif
+						<button type="submit"  class="btn btn-primary mt-3">
+							ユーザー情報更新
+						</button>
+			</form>
+			<form action="{{ route('user.postMailEdit') }}" method="POST">
+			@csrf
 						<p class="mailaddress-title">メールアドレス</p>
 						@if (Auth::id() == 4)
 							<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" readonly/><br />
 						@else
 							<input type="text" name="email" class="form-control " value="{{ $user->email }}" placeholder="メールアドレス" /><br />
 						@endif
-						<button type="submit"  class="btn btn-primary" >
-							更新する
+						<button type="submit"  class="btn btn-success" >
+							メールアドレス更新
 						</button>
 					</div>
 				</div>

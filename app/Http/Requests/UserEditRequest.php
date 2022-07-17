@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class UserEditRequest extends FormRequest
 {
@@ -25,25 +24,17 @@ class UserEditRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(Request $request)
+    public function rules()
     {
-		// ゲストユーザーログイン時は、ユーザー名とメールアドレスをバリデーションにかけない
+		// ゲストユーザーログイン時は、ユーザー名にバリデーションにかけない
 		if(Auth::id() == self::GUEST_USER_ID) {
 			return [
 				'icon' => 'file|mimes:jpeg,png,jpg,bmb|max:2048|nullable',
 			];
-		} elseif(Auth::user()->email == $request->email) { // 同一ユーザーがメールアドレスを変更する時は、重複したメールアドレスを許可する
+		}
 			return [
 				'name' => 'required|max:15',
-				'email' => 'required|max:255',
 				'icon' => 'file|mimes:jpeg,png,jpg,bmb|max:2048|nullable',
 			];
-			} else { // ゲストユーザー以外がログインしている時は、全てのユーザー情報をバリデーションにかける
-			return [
-				'name' => 'required|max:15',
-				'email' => 'required|max:255|unique:users',
-				'icon' => 'file|mimes:jpeg,png,jpg,bmb|max:2048|nullable',
-        ];
-		}
     }
 }

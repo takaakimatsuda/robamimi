@@ -8,6 +8,7 @@ use InterventionImage;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserEditRequest;
+use App\Http\Requests\MailEditRequest;
 
 class UserController extends Controller
 {
@@ -35,7 +36,7 @@ class UserController extends Controller
 	 * ユーザ更新関数
 	 */
 
-	public function postEdit(UserEditRequest $request)
+	public function postUserEdit(UserEditRequest $request)
 	{
 		// ログインidのデータを取得
 		$user = Auth::user();
@@ -60,6 +61,17 @@ class UserController extends Controller
 		if (isset($post['defaultImage'])){
 			$this->user->deleteUserIconFindById($user);
 		}
+		// 再度編集画面へリダイレクト
+		session()->flash('flash_message', '更新しました');
+		return redirect()->route('user.edit', ['id' => $user['id']]);
+	}
+	public function postMailEdit(MailEditRequest $request){
+		// ログインidのデータを取得
+		$user = Auth::user();
+		// リクエストフォームに入力したデータを取得
+		$post = $request->post();
+		// DBへ更新依頼
+		$this->user->fill($request->validated())->updateMailFindById($post, $user);
 		// 再度編集画面へリダイレクト
 		session()->flash('flash_message', '更新しました');
 		return redirect()->route('user.edit', ['id' => $user['id']]);
