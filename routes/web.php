@@ -27,8 +27,6 @@ Route::group(['middleware' => ['guest']], function () {
 	Route::get('/', [AuthController::class,'showLogin'])->name('login.show');
 	# ゲストユーザーログイン
 	Route::get('guest', [LoginController::class, 'guestLogin'])->name('login.guest');
-	// ログイン処理
-	Route::post('login',[AuthController::class, 'login'])->name('login');
 	// Twitterログイン処理
 	Route::get('login/twitter', [LoginController::class, 'redirectToTwitterProvider'])->name('login.twitter');
 	Route::get('login/twitter/callback', [LoginController::class, 'handleTwitterProviderCallback']);
@@ -55,8 +53,6 @@ Route::group(['middleware' => ['guest']], function () {
 Route::group(['middleware' => ['auth']], function () {
 	// ホーム画面
 	Route::get('home', [HomeController::class, 'index'])->name('home');
-	// Auth::routes();
-	Route::post('logout', [AuthController::class,'logout'])->name('logout');
 	Route::group(['prefix' => 'user'], function() {
         Route::get('edit', [UserController::class,'getEdit'])->name('user.edit');
         Route::post('edit/mail', [UserController::class,'postMailEdit'])->name('user.postMailEdit');
@@ -80,6 +76,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/unlike/{commentId}',[LikeController::class,'delete']);
 });
 
+// ログイン・ログアウト処理
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -16,13 +16,12 @@
 		<x-alert type="danger" :session="session('danger')"/>
 
 		<div class="card">
+			<h3 class="login-title">『ロバミミ』はスレッド型SNSです</h1>
+			<li class="login-detail">話したいジャンルでスレッドを立てます。</li>
+			<li class="login-detail">スレッドの中で感想を話し合います。</li>
+			<li class="login-detail">ネタバレを気にせず交流しましょう！</li>
 			<form class="form-signin" method="POST" action="{{ route('login') }}">
 				@csrf
-				<h3 class="login-title">『ロバミミ』はスレッド型SNSです</h1>
-				<li class="login-detail">話したいジャンルでスレッドを立てます。</li>
-				<li class="login-detail">スレッドの中で感想を話し合います。</li>
-				<li class="login-detail">ネタバレを気にせず交流しましょう！</li>
-
 				<label for="inputEmail" class="sr-only">Email address</label>
 				<input type="email" id="inputEmail" name="email" class="form-control" placeholder="メールアドレス" required autofocus>
 				<label for="inputPassword" class="sr-only">Password</label>
@@ -34,7 +33,6 @@
 				<a class="guest-btn btn-lg btn-primary fw-bold text-white text-decoration-none" href="{{ route('login.guest') }}">
 					ゲストログイン
 				</a>
-				<br>
 			</form>
 			<a class="register-btn btn-lg btn-info fw-bold" href="{{ route('register') }}">新規登録</a>
 			<a class="pass-forget-btn btn-lg btn-success fw-bold" href="{{ route('password_reset.email.form') }}">パスワードを忘れた方</a>

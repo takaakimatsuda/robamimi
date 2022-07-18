@@ -16,7 +16,7 @@
 							<span class="error">{{ $message }}</span>
 						@enderror
 					</div>
-					<button class="login-btn btn-lg btn-info mt-5" type="submit">再設定用メールを送信</button>
+					<button class="login-btn btn-lg btn-primary mt-5" type="submit">再設定用メールを送信</button>
 				</form>
 				<div class="back-btn mt-5">
 					<a class="back-btn btn-lg btn-success mt-5" href="{{ route('login.show') }}">戻る</a>
