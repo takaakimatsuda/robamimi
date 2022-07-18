@@ -19,6 +19,7 @@ class LayoutComposer
     {
         $view->with([
             'unread_notifications' => Notification::with('comment.user')->where('user_id', Auth::user()->id)->whereNull('read_at')->count(),
+			'login_user' => Auth::user(),
         ]);
     }
 

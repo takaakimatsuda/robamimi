@@ -58,8 +58,12 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-									<i class="fas fa-bars fa-2x"></i>
+                                <a id="navbarDropdown" class="nav-block link-dark" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+									@if (isset($login_user->icon))
+										<img class="nav-icon" style="width: 40px; border-radius: 50%;" src="{{ $login_user->icon }}">
+									@else
+										<i class="nav-icon fas fa-user-circle fa-3x" style="opacity: 1.0;"></i>
+									@endif
                                 </a>
 
 								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
