@@ -26,13 +26,14 @@ class CommentController extends Controller
 	public function store(Request $request)
 	{
 		$thread_id = $request->query('thread_id');
+		$thread = Thread::find($thread_id);
 		// フォームに入力されたコメント情報をデータベースへ登録
 		$comment = new Comment();
 		$comment->user_id = Auth::id();
 		$form = $request->all();
 		$comment->fill($form)->save();
 		// スレッド投稿したユーザーとコメント投稿したユーザーが違う場合、通知用のレコードを作成
-		if($thread_id != $comment->user_id ){
+		if($thread->user_id != $comment->user_id ){
 			$comment->createNotificationComment();
 		}
 			return redirect()->route('comment.index', $thread_id);
@@ -40,7 +41,7 @@ class CommentController extends Controller
 
 	public function delete(Request $request)
 	{
-		$commentId = $request->comment;
+		$commentId = $request->commentId;
 		Comment::deleteCommentFindById($commentId);
 		return back();
 	}

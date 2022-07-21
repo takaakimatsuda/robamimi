@@ -27,8 +27,7 @@ class UserController extends Controller
 	 */
 	public function getEdit()
 	{
-		$id = Auth::id();
-		$user = $this->user->selectUserFindById($id);
+		$user = Auth::user();
 		return view('user.edit', compact('user'));
 	}
 
@@ -45,7 +44,7 @@ class UserController extends Controller
 		// 配列から画像の値を取り出す
 		$image = $request->file('image');
 	// $imageに値が入っている場合、s3アップロード開始
-		if (isset($image)){
+		if (!empty($image)){
 			// 画像をトリミングする
 			InterventionImage::make($image)->fit(300, 300)->save($image);
 			// バケットの/フォルダへアップロード

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 // ソフトデリートを使用できるように
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+
 
 class Comment extends Model
 {
@@ -16,37 +18,37 @@ class Comment extends Model
 
 
 	/**
-  * コメントを所有しているユーザーの取得
-  */
-  public function user()
-  {
-	  return $this->belongsTo(User::class);
-  }
+	* コメントを所有しているユーザーの取得
+	*/
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
 
 	/**
-  * コメントを所有しているスレッドの取得
-  */
-  public function thread()
-  {
-	  return $this->belongsTo(Thread::class);
-  }
+	* コメントを所有しているスレッドの取得
+	*/
+	public function thread()
+	{
+		return $this->belongsTo(Thread::class);
+	}
 
-  	/**
-  * コメントを所有しているいいねの取得
-  */
-  public function likes()
-  {
-	  return $this->belongsToMany(User::class, 'likes')->withTimestamps();
-  }
+	/**
+	* コメントを所有しているいいねの取得
+	*/
+	public function likes()
+	{
+		return $this->belongsToMany(User::class, 'likes')->withTimestamps();
+	}
 
-  use SoftDeletes;
+	use SoftDeletes;
 
-  public static function deleteCommentFindById($commentId)
-  {
-	  return self::where([
-		  'id' => $commentId
-	  ])->delete();
-  }
+	public static function deleteCommentFindById($commentId)
+	{
+		return self::where([
+		'id' => $commentId
+		])->delete();
+	}
 
 	/**
      * そのコメントにユーザーがすでにいいねを押しているかチェック
@@ -76,7 +78,7 @@ class Comment extends Model
 	}
 
 	// コメントが削除された場合、通知レコードも削除
-	use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+	use SoftCascadeTrait;
 	protected $softCascade = ['notifications'];
 
 }

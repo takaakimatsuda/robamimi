@@ -30,7 +30,7 @@
 			{{-- 削除 --}}
 			<div class="mt-3 col-3">
 				@if (Auth::id() == $thread->user_id)
-				<form action="{{route('thread.delete', ['thread'=>$thread->id])}}" method="POST">
+				<form action="{{route('thread.delete', ['threadId'=>$thread->id])}}" method="POST">
 						@method('DELETE')
 						@csrf
 						<button class="trash"><i class="fas fa-trash" type="submit"></i></button>

@@ -42,7 +42,7 @@
 			{{-- 削除 --}}
 			<div class="mt-3 col-3">
 				@if (Auth::id() == $comment->user_id)
-				<form action="{{ route('comment.delete', ['comment' => $comment->id]) }}" method="POST">
+				<form action="{{ route('comment.delete', ['commentId' => $comment->id]) }}" method="POST">
 					@method('DELETE')
 					@csrf
 					<button class="trash"><i class="fas fa-trash" type="submit"></i></button>

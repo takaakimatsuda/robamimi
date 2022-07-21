@@ -21,25 +21,29 @@ class ThreadController extends Controller
 
 	public function store(Request $request, $genre_id)
 	{
-		$post = new Thread();
-		$post->user_id = Auth::id();
-		$post->genre_id = $genre_id;
-		$post->title = $request->title;
-		$post->save();
+		$thread = new Thread();
+		$thread->user_id = Auth::id();
+		$thread->genre_id = $genre_id;
+		$thread->title = $request->title;
+		$thread->save();
 		return back();
 	}
 
 	public function delete(Request $request)
 	{
-		$id = $request->thread;
-		Thread::deleteThreadFindById($id);
-		return back();
+		$thread_id = $request->threadId;
+		$thread = Thread::find($thread_id);
+		if ($thread->user_id === Auth::id()){
+			Thread::deleteThreadFindById($thread_id);
+		}
+			return back();
 	}
 
 	public function search(Request $request)
 	{
+		$request->input('query');
 		// 検索フォームに入力された単語のエスケープ処理
-		$search_message = '%' . addcslashes($request->search_message, '%_\\') . '%';
+		$search_message = '%' . addcslashes($request->input('query'), '%_\\') . '%';
 		// 検索フォームに入力された単語でLIKE検索した結果のスレッド情報を取得して代入（最新情報を上位に表示）
 		$threads = Thread::where('title', 'LIKE', $search_message)->withCount('comments')->orderBy('created_at', 'desc')->paginate(5);
 		// スレッド検索ページを表示

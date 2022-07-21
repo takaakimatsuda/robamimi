@@ -50,25 +50,6 @@ class User extends Authenticatable
     //     'email_verified_at' => 'datetime',
     // ];
 
-		/**
-	 * IDから一件のデータを取得する
-	 */
-	public function selectUserFindById($id)
-	{
-		// 「SELECT id, name, email WHERE id = ?」を発行する
-		$query = $this->select
-		([
-			'id',
-			'name',
-			'email',
-			'icon'
-		])->where([
-			'id' => $id
-		]);
-		// first()は1件のみ取得する関数
-		return $query->first();
-	}
-
 	/**
  * IDで指定したユーザを更新する
  */

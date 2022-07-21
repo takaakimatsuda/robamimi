@@ -30,7 +30,7 @@ class HomeController extends Controller
 		$carbon = new Carbon('now');
 
 		// 未読通知を既読状態にする
-		Notification::with('comment.user')->where('user_id', Auth::user()->id)->whereNull('read_at')->update([
+		Notification::where('user_id', Auth::user()->id)->whereNull('read_at')->update([
 			'read_at' => $carbon
 		]);
 		// ログインユーザーが受け取っている通知を取り出す
