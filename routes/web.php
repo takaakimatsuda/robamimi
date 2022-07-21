@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::post('delete', [UserController::class,'delete'])->name('user.delete');
     });
 	Route::prefix('thread')->name('thread.')->group(function () {
-		Route::post('/search', [ThreadController::class, 'search'])->name('search');
+		Route::get('/search', [ThreadController::class, 'search'])->name('search');
 		Route::get('/{genre}', [ThreadController::class, 'index'])->name('index');
 		Route::post('/{genre_id}', [ThreadController::class, 'store'])->name('store');
 		Route::delete('delete', [ThreadController::class, 'delete'])->name('delete');

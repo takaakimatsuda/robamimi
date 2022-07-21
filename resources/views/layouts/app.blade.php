@@ -41,10 +41,9 @@
                     <ul class="navbar-nav me-auto">
 						@guest
 						@else
-						<form action="{{route('thread.search')}}" method="post">
-							@csrf
+						<form action="{{route('thread.search')}}" method="GET">
 							<div class="float-start">
-								<input type="text" name="search_message" class="form-search" id="exampleFormSearchlInput1" placeholder="🔍  スレッドを検索する" required>
+								<input type="text" name="query" class="form-search" id="exampleFormSearchlInput1" placeholder="🔍  スレッドを検索する" required>
 							</div>
 						</form>
 						@endguest
