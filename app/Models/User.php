@@ -158,8 +158,9 @@ public function updateMailFindById($post, $user)
 		if($this->isLike($commentId)){
 			$like =  Like::where('comment_id',$commentId)->where('user_id',Auth::id())->first();
 			$notification = Notification::where('like_id',$like->id)->first();
-			// 通知が未読の場合、通知を削除する
-			if(is_null($notification->read_at)){
+			\Log::info($notification);
+			// 通知が存在し、かつ未読の場合、通知を削除する
+			if(!empty($notification) && is_null($notification->read_at)){
 				$notification->delete();
 			}
 			//もし既に「いいね」していたら消す
