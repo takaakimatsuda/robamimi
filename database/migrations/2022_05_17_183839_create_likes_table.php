@@ -18,9 +18,6 @@ class CreateLikesTable extends Migration
 			$table->foreignId('user_id')->comment('ユーザーのID')->constrained();
 			$table->foreignId('comment_id')->comment('コメントのID')->constrained();
             $table->timestamps();
-
-			// 削除処理はソフトデリートであることを定義
-			$table->softDeletes();
         });
     }
 
