@@ -35,7 +35,7 @@
 				@csrf
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
-						<h7 class="icon-title fw-bold">アイコンを更新する場合は画像を設定してください</h7>
+						<p class="icon-title fw-bold">アイコンを更新する場合は画像を設定してください</p>
 						<input id="image" type="file" name="image"><br>
 						<div class="default-image mt-1">
 							<input type="checkbox" name="defaultImage">アイコンをデフォルトに戻す
@@ -70,9 +70,11 @@
 			@if (Auth::id() == 4)
 			@else
 				<div class="mb-2 text-end">
-					<form action="{{ route('user.delete') }}" name="form_delete" method="POST">
+					<form action="{{ route('user.delete') }}" method="POST">
 					@csrf
-						<a href="#" class="btn btn-link" onclick="deletePost(this);">退会する</a>
+						<button type="submit"  class="btn btn-link" >
+							退会する
+						</button>
 					</form>
 				</div>
 			@endif
@@ -80,14 +82,5 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	function deletePost(e) {
-		'use strict';
-		if (confirm('本当に退会してよろしいですか？')) {
-			document.form_delete.submit();
-		}
-	}
-</script>
 
 @endsection
