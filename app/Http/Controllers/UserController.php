@@ -35,7 +35,7 @@ class UserController extends Controller
 	 * ユーザ更新関数
 	 */
 
-	public function postUserEdit(UserEditRequest $request)
+	public function infoUpdate(UserEditRequest $request)
 	{
 		// ログインidのデータを取得
 		$user = Auth::user();
@@ -64,7 +64,7 @@ class UserController extends Controller
 		session()->flash('flash_message', '更新しました');
 		return redirect()->route('user.edit', ['id' => $user['id']]);
 	}
-	public function postMailEdit(MailEditRequest $request){
+	public function emailUpdate(MailEditRequest $request){
 		// ログインidのデータを取得
 		$user = Auth::user();
 		// リクエストフォームに入力したデータを取得

@@ -55,8 +55,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('home', [HomeController::class, 'index'])->name('home');
 	Route::group(['prefix' => 'user'], function() {
         Route::get('edit', [UserController::class,'getEdit'])->name('user.edit');
-        Route::post('edit/mail', [UserController::class,'postMailEdit'])->name('user.postMailEdit');
-		Route::post('edit/user', [UserController::class,'postUserEdit'])->name('user.postUserEdit');
+        Route::post('edit/mail', [UserController::class,'emailUpdate'])->name('user.emailUpdate');
+		Route::post('edit/user', [UserController::class,'infoUpdate'])->name('user.infoUpdate');
 		Route::post('delete', [UserController::class,'delete'])->name('user.delete');
     });
 	Route::prefix('thread')->name('thread.')->group(function () {

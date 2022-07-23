@@ -31,7 +31,7 @@
 						@endif
 					</div>
 				</div>
-			<form action="{{ route('user.postUserEdit') }}" method="POST" enctype="multipart/form-data">
+			<form action="{{ route('user.infoUpdate') }}" method="POST" enctype="multipart/form-data">
 				@csrf
 				<div class="row mb-3">
 					<div class="col-md-8 offset-md-2">
@@ -53,7 +53,7 @@
 							ユーザー情報更新
 						</button>
 			</form>
-			<form action="{{ route('user.postMailEdit') }}" method="POST">
+			<form action="{{ route('user.emailUpdate') }}" method="POST">
 			@csrf
 						<p class="mailaddress-title">メールアドレス</p>
 						@if (Auth::id() == 4)
