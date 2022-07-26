@@ -1,0 +1,12 @@
+html,
+body {
+  height: 100%;
+}
+
+.card-body {
+  display: -ms-flexbox;
+  display: block;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  padding-bottom: 40px;
+}

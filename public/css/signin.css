@@ -1,0 +1,93 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: block;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.login-alert.alert-danger {
+	margin-top: 46px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 530px;
+	padding: 15px 15px 0 15px;
+  margin: 0 auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+h3.login-title {
+	margin-bottom: 1rem;
+	margin-top: 4rem;
+	font-weight: bold;
+	color: darkgray;
+}
+
+li.login-detail {
+	font-weight: bold;
+}
+
+a.fab.fa-twitter.fa-3x.text-decoration-none {
+	color: rgba(0, 172, 237, 1);
+}
+
+button.login-btn.btn-lg.btn-warning {
+	color: white;
+	margin: 10px 0;
+	margin-left: 166px;
+}
+
+a.register-btn.btn-lg.btn-info {
+	color: white;
+	text-decoration: none;
+	width: 110px;
+  margin-left: 118px;
+  border: outset;
+}
+
+a.pass-forget-btn.btn-lg.btn-success {
+	font-size: 0.8rem;
+	text-decoration: none;
+	margin-right: -50px;
+	width: 100px;
+	border: outset;
+}
+
+
+
+i.fab.fa-twitter.fa-3x {
+	margin: 0 10px;
+	color: #55ACEE;
+}
+
+i.fab.fa-instagram.fa-3x {
+	margin: 0 10px;
+	color: #FF8E26;
+}
+
+.flash_message.bg-secondary {
+	margin-top: 45px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}

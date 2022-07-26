@@ -18,10 +18,13 @@ class CreateUsersTable extends Migration
             $table->string('name', 100);
             $table->string('email')->unique();
             $table->string('password');
-            $table->tinyInteger('locked_flg')->default(0);
-            $table->integer('error_count')->unsigned()
-			->default(0);
+			$table->string('icon')->nullable();
+			$table->string('token')->nullable();
+			$table->boolean('twitter')->default(false);
             $table->timestamps();
+
+			// 削除処理はソフトデリートであることを定義
+			$table->softDeletes();
         });
     }
 
@@ -32,6 +35,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+		Schema::dropIfExists('threads');
+		Schema::dropIfExists('user_tokens');
         Schema::dropIfExists('users');
     }
 }
