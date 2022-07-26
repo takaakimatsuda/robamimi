@@ -71,6 +71,21 @@ class DatabaseSeeder extends Seeder
 			'title' => 'となりのトトロ',
 			'genre_id' => 1,
 		]);
+		Thread::create([
+			'user_id' => 2,
+			'title' => 'ニューシネマ・パラダイス',
+			'genre_id' => 1,
+		]);
+		Thread::create([
+			'user_id' => 3,
+			'title' => '呪詛',
+			'genre_id' => 1,
+		]);
+		Thread::create([
+			'user_id' => 1,
+			'title' => 'デッドプール',
+			'genre_id' => 1,
+		]);
 		Comment::create([
 			'thread_id' => 1,
 			'user_id' => 1,
