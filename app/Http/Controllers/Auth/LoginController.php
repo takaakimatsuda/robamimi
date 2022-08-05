@@ -65,6 +65,11 @@ class LoginController extends Controller
 	public function handleTwitterProviderCallback(){
 		try {
 			$twitter_user = Socialite::with("twitter")->user();
+			// メールアドレスが取得できない場合、ログインせずにログイン画面に戻る
+			if(empty($twitter_user->email)) {
+				session()->flash('flash_message', 'Twitterログイン対象外のアカウントです。ログイン、もしくは新規登録してください。');
+				return redirect()->to('/');
+			}
 		}
 		catch (\Exception $e) {
 			return redirect('/')->with('oauth_error', 'ログインに失敗しました');
