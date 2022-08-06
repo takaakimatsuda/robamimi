@@ -44,7 +44,7 @@
 			<form action="{{ route('thread.store', ['genre_id'=>$genre->id]) }}" method="POST">
 				@csrf
 				<div>
-					<input type="text" class="form-control" name="title" placeholder="スレッドを作成する" autofocus/>
+					<input type="text" class="form-control" name="title" placeholder="入力例：◯◯◯◯◯  (話数があるものは)第◯話" autofocus/>
 				</div>
 				<div class="text-end mt-1 rounded">
 					<button class="btn-success text-end rounded">送信</button>
