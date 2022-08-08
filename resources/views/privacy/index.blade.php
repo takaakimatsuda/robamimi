@@ -59,7 +59,7 @@
 				<p>当代表が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</p>
 				<p>第10条（お問い合わせ窓口）</p>
 				<p>本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。</p>
-				<p>Twitter：<a href="https://twitter.com/ptn_kitaku">ぱっつん</a></p>
+				<p>メールアドレス：hamon.memeta@gmail.com</p>
 				<p class="text-end">以上</p>
 			</div>
 		</div>
