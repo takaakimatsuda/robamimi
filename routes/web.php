@@ -10,6 +10,8 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RuleController;
+use App\Http\Controllers\TermController;
+use App\Http\Controllers\PrivacyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +73,8 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::delete('delete', [CommentController::class, 'delete'])->name('delete');
 	});
 	Route::get('/rule', [RuleController::class, 'index'])->name('rule.index');
+	Route::get('/terms', [TermController::class, 'index'])->name('terms.index');
+	Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy.index');
 
 	Route::post('/like/{commentId}',[LikeController::class,'store']);
 	Route::post('/unlike/{commentId}',[LikeController::class,'delete']);

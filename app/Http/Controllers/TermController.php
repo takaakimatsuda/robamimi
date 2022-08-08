@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-class RuleController extends Controller
+class TermController extends Controller
 {
 	public function index() {
-		return view('rule/index');
+		return view('terms/index');
 	}
 }
