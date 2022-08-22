@@ -69,7 +69,7 @@ mysql 14.14
 AWS(EC2, S3, RDS, Route 53)
 
 ### その他の使用技術
-Git(GitHub) / Visual Studio Code / Let's Encrypt(SSL証明書の発行)
+Git(GitHub) / Visual Studio Code / Let's Encrypt(SSL証明書の発行) / Docker(開発環境のみ)[https://github.com/takaakimatsuda/robamimi/tree/docker](https://github.com/takaakimatsuda/robamimi/tree/docker)
 
 # 要件定義書
 
@@ -80,7 +80,7 @@ URL(Figma):[https://www.figma.com/file/ucfh2sUuKbIMBObYhoy4yA/%E3%83%AD%E3%83%90
 
 # AWS構成図
 
-![robamimi](https://user-images.githubusercontent.com/56643466/184115703-f9af82af-0fa9-41da-b4ac-e698f0f505d0.png)
+![robamimi drawio](https://user-images.githubusercontent.com/56643466/185874513-8e1ed766-eb74-4f41-a123-47b44df1c097.png)
 
 # テーブル設計(ER 図)
 
