@@ -1,4 +1,4 @@
-name: Laravel
+name: UnitTest
 
 on:
   push:
@@ -7,9 +7,10 @@ on:
     branches: [ "main" ]
 
 jobs:
-  laravel-tests:
-
+  laravel_test:
+    name: phpunit test
     runs-on: ubuntu-latest
+
   services:
     mysql:
       image: mysql:8.0.19
