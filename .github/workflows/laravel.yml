@@ -45,9 +45,5 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: migrate
       run: php artisan migrate
-      env:
-        DB_HOST: 172.18.0.1
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_HOST: 172.18.0.1
       run: vendor/bin/phpunit
