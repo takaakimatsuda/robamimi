@@ -18,7 +18,7 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD:
-          MYSQL_DATABASE: robamimi_app
+          MYSQL_DATABASE: laravel
           MYSQL_USER: root
           MYSQL_PASSWORD:
           MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
